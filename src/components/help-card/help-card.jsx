@@ -1,19 +1,17 @@
-import { Icon } from '@iconify/react';
-
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
-import Typography from '@mui/material/Typography'; // Import Iconify Icon
+import Typography from '@mui/material/Typography'; 
 
 import { LearnMoreTypography } from '../learn-more/learn-more';
 
-export default function BigCard({ title, description, items, style, action, img, sx, ...other }) {
+export default function HelpCard({ title, description, items, style, action, img, sx, ...other }) {
   const theme = useTheme();
 
   return (
     <Box
       sx={{
         p: 5,
-        gap: 1,
+        gap: 4,
         borderRadius: 2,
         display: 'flex',
         height: { md: 1 },
@@ -46,7 +44,7 @@ export default function BigCard({ title, description, items, style, action, img,
         <Box component="ul" sx={style} mb={2} p={1}>
           {items.map((item, index) => (
             <li key={index}>
-              <Typography variant="body2" fontWeight={400} color="#637381" p={0.1}>
+              <Typography variant="body2" fontWeight={400} color="#637381">
                 {item}
                 {index === items.length - 1 && <LearnMoreTypography />}{' '}
               </Typography>
@@ -60,6 +58,7 @@ export default function BigCard({ title, description, items, style, action, img,
       {img && (
         <Box
           sx={{
+            p: 1, 
             position: 'relative',
             display: 'inline-block',
           }}
@@ -74,53 +73,10 @@ export default function BigCard({ title, description, items, style, action, img,
               cursor: 'pointer',
               objectFit: 'contain',
               p: 0,
-              borderRadius: 1,
-              boxShadow: theme.shadows[1],
+              borderRadius: 1.5,
+              
             }}
           />
-
-          <Box
-            component="button"
-            sx={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              background: 'transparent',
-              borderRadius: '50%',
-              border: 'none',
-              cursor: 'pointer',
-              '&:focus': { outline: 'none' },
-            }}
-          >
-            <Icon
-              icon="icon-park-solid:play"
-              style={{
-                fontSize: '48px',
-                borderRadius: '50%',
-                color: theme.palette.primary.main,
-                animation: 'pulse 1.5s infinite',
-              }}
-            />
-            <style>
-              {`
-      @keyframes pulse {
-        0% {
-          box-shadow: 0 0 0 0 rgba(7, 141, 238, 0.3);
-          transform: scale(1);
-        }
-        50% {
-          box-shadow: 0 0 0 10px rgba(7, 141, 238, 0.1);
-          transform: scale(1.0565);
-        }
-        100% {
-          box-shadow: 0 0 0 0 rgba(7, 141, 238, 0);
-          transform: scale(1);
-        }
-      }
-    `}
-            </style>
-          </Box>
         </Box>
       )}
     </Box>

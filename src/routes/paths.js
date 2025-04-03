@@ -53,5 +53,8 @@ export const paths = {
       activityLog: `${ROOTS.DASHBOARD}/settings/activity-log`,
       timeZone: `${ROOTS.DASHBOARD}/settings/time-zone`,
     },
+    user: {
+      root: `${ROOTS.DASHBOARD}/user`,
+    },
   },
 };

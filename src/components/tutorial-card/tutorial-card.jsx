@@ -1,62 +1,28 @@
-import { Icon } from '@iconify/react';
-
+import { Icon } from '@iconify/react'; // Ensure correct import for Iconify
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
-import Typography from '@mui/material/Typography'; // Import Iconify Icon
+import Typography from '@mui/material/Typography';
 
-import { LearnMoreTypography } from '../learn-more/learn-more';
-
-export default function BigCard({ title, description, items, style, action, img, sx, ...other }) {
+export default function TutorialCard({ description, img, sx, ...other }) {
   const theme = useTheme();
 
   return (
     <Box
       sx={{
-        p: 5,
+        width: 310,
+        p: 1,
         gap: 1,
         borderRadius: 2,
         display: 'flex',
-        height: { md: 1 },
-        position: 'relative',
-        pl: { xs: 3, md: 5 },
-        alignItems: 'center',
+        flexDirection: 'column',
+        alignItems: 'left',
         color: 'common.black',
         backgroundColor: 'common.white',
-        textAlign: { xs: 'center', md: 'left' },
-        flexDirection: { xs: 'column', md: 'row' },
+        textAlign: 'center',
         ...sx,
       }}
       {...other}
     >
-      <Box
-        sx={{
-          display: 'flex',
-          flex: '1 1 auto',
-          flexDirection: 'column',
-          alignItems: { xs: 'center', md: 'flex-start' },
-        }}
-      >
-        <Typography variant="h4" sx={{ whiteSpace: 'pre-line', mb: 1 }}>
-          {title}
-        </Typography>
-
-        <Typography variant="body2" sx={{ color: 'text.secondary', ...(action && { mb: 1 }) }}>
-          {description}
-        </Typography>
-        <Box component="ul" sx={style} mb={2} p={1}>
-          {items.map((item, index) => (
-            <li key={index}>
-              <Typography variant="body2" fontWeight={400} color="#637381" p={0.1}>
-                {item}
-                {index === items.length - 1 && <LearnMoreTypography />}{' '}
-              </Typography>
-            </li>
-          ))}
-        </Box>
-
-        {action && action}
-      </Box>
-
       {img && (
         <Box
           sx={{
@@ -69,8 +35,8 @@ export default function BigCard({ title, description, items, style, action, img,
             src={img}
             alt="Thumbnail"
             sx={{
-              height: 227,
-              width: 500,
+              width: '100%',
+              height: 'auto',
               cursor: 'pointer',
               objectFit: 'contain',
               p: 0,
@@ -123,6 +89,18 @@ export default function BigCard({ title, description, items, style, action, img,
           </Box>
         </Box>
       )}
+
+      <Typography
+        variant="h4"
+        sx={{
+          color: 'text.primary',
+          mt: 2,
+          textAlign: 'left',
+          fontSize: '14px !important',
+        }}
+      >
+        {description}
+      </Typography>
     </Box>
   );
 }

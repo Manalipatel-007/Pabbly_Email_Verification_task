@@ -63,6 +63,8 @@ export default function Page() {
         <Box sx={{ mt: 3 }}>
           <FolderList />
         </Box>
+
+        <Box >
         <Box sx={{ mt: 3 }}>
           <Grid xs={12} md={8}>
             <BigCard
@@ -90,10 +92,13 @@ export default function Page() {
             />
           </Grid>
         </Box>
-      </Box>
-      <Box>
+        <Box>
         <DashboardListView />
       </Box>
+        </Box>
+       
+      </Box>
+    
     </DashboardContent>
   );
 }

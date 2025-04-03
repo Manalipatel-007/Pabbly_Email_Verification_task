@@ -1,8 +1,13 @@
-import { Helmet } from 'react-helmet-async';
+import { Box } from '@mui/material';
 
 import { CONFIG } from 'src/config-global';
+import { DashboardContent } from 'src/layouts/dashboard';
 
-import { BlankView } from 'src/sections/blank/view';
+import PageHeader from 'src/components/page-header/page-header';
+import { StatsCards } from 'src/components/stats-cards/stats-casrds';
+import SettingsTabs from 'src/components/settings-tabs/settings-tabs';
+
+import { ActivityLogListView } from 'src/sections/settings/components/activity-log-table/activity-log-list-view';
 
 // ----------------------------------------------------------------------
 
@@ -10,12 +15,51 @@ const metadata = { title: `Page three | Dashboard - ${CONFIG.site.name}` };
 
 export default function Page() {
   return (
-    <>
-      <Helmet>
-        <title> {metadata.title}</title>
-      </Helmet>
+    <DashboardContent maxWidth="xl">
+      <PageHeader
+        title="Credits Summary"
+        description="View a summary of your email verification credits. "
+        showButton={false}
+      />
 
-      <BlankView title="Page three" />
-    </>
+      <Box sx={{ mt: 2 }}>
+        <SettingsTabs />
+      </Box>
+      <Box
+        sx={{
+          gap: 3,
+          mt: 1,
+          display: 'grid',
+          gridTemplateColumns: { xs: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' },
+        }}
+      >
+        <StatsCards
+          statsCardstitle="Email Credits Consumed"
+          cardStats={32}
+          icon_name="consumed-icon.svg"
+          icon_color="#10CBF3"
+          bg_gradient="#10CBF3"
+        />
+
+        <StatsCards
+          statsCardstitle="Email Credits Remaining"
+          cardStats={9968}
+          icon_name="remaining-icon.svg"
+          icon_color="#1D88FA"
+          bg_gradient="#1D88FA"
+        />
+
+        <StatsCards
+          statsCardstitle="cardStats Number of Email Lists"
+          cardStats={100}
+          icon_name="lists-icon.svg"
+          icon_color="#28A645"
+          bg_gradient="#28A645"
+        />
+      </Box>
+      <Box sx={{ mt: 3 }}>
+        <ActivityLogListView />
+      </Box>
+    </DashboardContent>
   );
 }
