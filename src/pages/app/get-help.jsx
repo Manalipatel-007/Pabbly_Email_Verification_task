@@ -24,7 +24,7 @@ export default function Page() {
       <PageHeader
         title="Help & Tutorials"
         description="Tell us about your problem, and we’ll find you a solution."
-        showButton="false"
+        showButton={false}
       />
 
       <Box sx={{ mt: 3 }}>
