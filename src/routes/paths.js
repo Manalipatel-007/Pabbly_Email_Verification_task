@@ -43,7 +43,7 @@ export const paths = {
   // DASHBOARD
   dashboard: {
     root: ROOTS.DASHBOARD,
-    inbox: `${ROOTS.DASHBOARD}/inbox`,
+    // inbox: `${ROOTS.DASHBOARD}/inbox`,
     gethelp: `${ROOTS.DASHBOARD}/get-help`,
 
     settings: {

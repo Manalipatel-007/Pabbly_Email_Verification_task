@@ -30,7 +30,7 @@ export const navData = [
     subheader: 'Overview 6.0.0',
     items: [
       { title: 'Dashboard', path: paths.dashboard.root, icon: ICONS.dashboard },
-      { title: 'Inbox', path: paths.dashboard.inbox, icon: ICONS.inbox },
+      // { title: 'Inbox', path: paths.dashboard.inbox, icon: ICONS.inbox },
     ],
   },
 
