@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// Import Iconify
 
 import {
   Box,
@@ -60,7 +59,7 @@ const initialTableData = [
   },
 ];
 
-export function CreditSummaryListView() {
+export default function CreditSummaryListView() {
   const filterDialog = useBoolean();
   const [tableData] = useState(initialTableData);
 
@@ -87,9 +86,9 @@ export function CreditSummaryListView() {
         <Button
           variant="text"
           onClick={filterDialog.onTrue}
-          sx={{ color: 'blue', fontWeight: 'bold', pt: 1.5, pb:1.5, }}
+          sx={{ color: 'blue', fontWeight: 'bold', pt: 1.5, pb: 1.5 }}
           startIcon={<Iconify icon="mdi:filter" />}
-          color=''
+          color=""
         >
           Filters
         </Button>
