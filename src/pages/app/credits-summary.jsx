@@ -7,7 +7,7 @@ import PageHeader from 'src/components/page-header/page-header';
 import { StatsCards } from 'src/components/stats-cards/stats-casrds';
 import SettingsTabs from 'src/components/settings-tabs/settings-tabs';
 
-import { ActivityLogListView } from 'src/sections/settings/components/activity-log-table/activity-log-list-view';
+import { CreditSummaryListView } from 'src/sections/settings/components/credits-summary-table/credits-summary-list-view';
 
 // ----------------------------------------------------------------------
 
@@ -58,7 +58,7 @@ export default function Page() {
         />
       </Box>
       <Box sx={{ mt: 3 }}>
-        <ActivityLogListView />
+        <CreditSummaryListView />
       </Box>
     </DashboardContent>
   );

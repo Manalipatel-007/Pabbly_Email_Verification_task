@@ -10,7 +10,7 @@ import PageHeader from 'src/components/page-header/page-header';
 import { StatsCards } from 'src/components/stats-cards/stats-casrds';
 
 import FolderList from 'src/sections/dashboard/components/dashboard-folder';
-import { DashboardListView} from 'src/sections/dashboard/components/dashboard-table/dashboard-list-view';
+import DashboardListView from 'src/sections/dashboard/components/dashboard-table/dashboard-list-view';
 
 import thumbnailImage from '../../../public/assets/images/big-card-thumbnails/email-verication-video-thumbnail.png';
 
@@ -64,41 +64,39 @@ export default function Page() {
           <FolderList />
         </Box>
 
-        <Box >
-        <Box sx={{ mt: 3 }}>
-          <Grid xs={12} md={8}>
-            <BigCard
-              title="Verification Guidelines"
-              description="Please adhere to the following guidelines when uploading your CSV file:"
-              style={style}
-              items={items}
-              action={
-                <Button
-                  startIcon={
-                    <Iconify
-                      icon="heroicons:plus-circle-16-solid"
-                      style={{ width: 18, height: 18 }}
-                    />
-                  }
-                  endIcon={<Iconify icon="formkit:down" style={{ width: 18, height: 18 }} />}
-                  variant="outlined"
-                  color="primary"
-                  size="large"
-                >
-                  Verify Email
-                </Button>
-              }
-              img={thumbnailImage}
-            />
-          </Grid>
-        </Box>
         <Box>
-        <DashboardListView />
-      </Box>
+          <Box sx={{ mt: 3 }}>
+            <Grid xs={12} md={8}>
+              <BigCard
+                title="Verification Guidelines"
+                description="Please adhere to the following guidelines when uploading your CSV file:"
+                style={style}
+                items={items}
+                action={
+                  <Button
+                    startIcon={
+                      <Iconify
+                        icon="heroicons:plus-circle-16-solid"
+                        style={{ width: 18, height: 18 }}
+                      />
+                    }
+                    endIcon={<Iconify icon="formkit:down" style={{ width: 18, height: 18 }} />}
+                    variant="outlined"
+                    color="primary"
+                    size="large"
+                  >
+                    Verify Email
+                  </Button>
+                }
+                img={thumbnailImage}
+              />
+            </Grid>
+          </Box>
+          <Box sx={{ mt: 3 }}>
+            <DashboardListView />
+          </Box>
         </Box>
-       
       </Box>
-    
     </DashboardContent>
   );
 }

@@ -1,4 +1,4 @@
-import { Box, Button, Grid } from '@mui/material';
+import { Box, Grid, Button } from '@mui/material';
 
 import { CONFIG } from 'src/config-global';
 import { DashboardContent } from 'src/layouts/dashboard';
@@ -8,6 +8,9 @@ import { Iconify } from 'src/components/iconify';
 import BigCard from 'src/components/big-card/big-card';
 import PageHeader from 'src/components/page-header/page-header';
 import { StatsCards } from 'src/components/stats-cards/stats-casrds';
+
+import { TeamMembersListView } from 'src/sections/settings/components/team-members-table/team-members-list-view';
+import { TeamMembersListView2 } from 'src/sections/settings/components/team-members-table-2/team-members-list-view2';
 
 import thumbnailImage from '../../../public/assets/images/big-card-thumbnails/email-verication-video-thumbnail.png';
 
@@ -84,6 +87,14 @@ export default function Page() {
             img={thumbnailImage}
           />
         </Grid>
+      </Box>
+
+      <Box sx={{ mt: 3 }}>
+        <TeamMembersListView />
+      </Box>
+
+      <Box sx={{ mt: 3 }}>
+        <TeamMembersListView2 />
       </Box>
     </DashboardContent>
   );

@@ -6,6 +6,7 @@ import { listItems } from 'src/_mock/_dashboardBigCardListItem';
 
 import BigCard from 'src/components/big-card/big-card';
 import PageHeader from 'src/components/page-header/page-header';
+import APIKeysCard from 'src/components/apiKeysCard/apiKeysCard';
 import SettingsTabs from 'src/components/settings-tabs/settings-tabs';
 
 import thumbnailImage from '../../../public/assets/images/big-card-thumbnails/email-verication-video-thumbnail.png';
@@ -32,6 +33,10 @@ export default function Page() {
         <Grid xs={12} md={8}>
           <BigCard title="Points To Remember" style={style} items={items} img={thumbnailImage} />
         </Grid>
+      </Box>
+
+      <Box>
+        <APIKeysCard/>
       </Box>
     </DashboardContent>
   );

@@ -1,34 +1,234 @@
-import React from 'react';
+// import { useState } from 'react';
+
+// import {
+//   Box,
+//   Tab,
+//   Card,
+//   Tabs,
+//   Table,
+//   Button,
+//   TableRow,
+//   Checkbox,
+//   TableBody,
+//   TableCell,
+//   TableHead,
+//   TextField,
+//   Typography,
+//   IconButton,
+//   TableContainer,
+// } from '@mui/material';
+
+// import { Label } from 'src/components/label';
+// import { Iconify } from 'src/components/iconify';
+
+// const STATUS_TABS = [
+//   { value: 'all', label: 'All', count: 5, color: 'black', textColor: 'white' },
+//   { value: 'verified', label: 'Verified', count: 1, color: '#D1FADF', textColor: '#027A48' },
+//   { value: 'processing', label: 'Processing', count: 1, color: '#D1E9FF', textColor: '#175CD3' },
+//   { value: 'uploading', label: 'Uploading', count: 1, color: '#FEF0C7', textColor: '#DC6803' },
+//   { value: 'unverified', label: 'Unverified', count: 2, color: '#FECDCA', textColor: '#D92D20' },
+// ];
+
+// const TABLE_DATA = [
+//   {
+//     id: 1,
+//     status: 'Uploading',
+//     name: 'List 1',
+//     date: 'Oct 23, 2024 17:45:32',
+//     emails: 128,
+//     action: 'Uploading',
+//   },
+//   {
+//     id: 2,
+//     status: 'Unverified',
+//     name: 'List 2',
+//     date: 'Oct 23, 2024 17:45:32',
+//     emails: 65,
+//     action: 'Start Verification',
+//   },
+//   {
+//     id: 3,
+//     status: 'Unverified',
+//     name: 'List 3',
+//     date: 'Oct 23, 2024 17:45:32',
+//     emails: 250,
+//     action: 'Start Verification',
+//   },
+//   {
+//     id: 4,
+//     status: 'Processing',
+//     name: 'List 4',
+//     date: 'Oct 23, 2024 17:45:32',
+//     emails: 65,
+//     action: 'Verification In Progress',
+//     credit: '65 Credit Consumed',
+//   },
+//   {
+//     id: 5,
+//     status: 'Verified',
+//     name: 'List 5',
+//     date: 'Oct 23, 2024 17:45:32',
+//     emails: 653343,
+//     action: 'Download Report',
+//     credit: '653343 Credit Consumed',
+//   },
+// ];
+
+// export default function DashboardListView() {
+//   const [selectedTab, setSelectedTab] = useState('all');
+//   const [searchQuery, setSearchQuery] = useState('');
+
+//   const filteredData = TABLE_DATA.filter(
+//     (row) =>
+//       (selectedTab === 'all' || row.status.toLowerCase() === selectedTab) &&
+//       row.name.toLowerCase().includes(searchQuery.toLowerCase())
+//   );
+
+//   return (
+//     <Card>
+//       <Box p={2} justifyContent="space-between" alignItems="center">
+//         <Typography variant="h5">Home</Typography>
+//         <Typography variant="body2" color="textSecondary">
+//           Verify and manage all your uploaded email lists here.
+//         </Typography>
+//       </Box>
+//       <Box p={2} display="flex" alignItems="center" gap={1} width="100%">
+//         <TextField
+//           variant="outlined"
+//           size="small"
+//           fullWidth
+//           placeholder="Search by email list name..."
+//           InputProps={{
+//             sx: { height: 54 }, // Increase the height of the search bar
+//           }}
+//           value={searchQuery}
+//           onChange={(e) => setSearchQuery(e.target.value)}
+//         />
+//         <IconButton>
+//           {/* <RefreshIcon /> */}
+//           <Iconify icon="mdi:dots-vertical" />
+//         </IconButton>
+//       </Box>
+
+//       <Box p={2}>
+//         <Tabs value={selectedTab} onChange={(e, newValue) => setSelectedTab(newValue)}>
+//           {STATUS_TABS.map((tab) => (
+//             <Tab
+//               key={tab.value}
+//               value={tab.value}
+//               label={
+//                 <Box display="flex" alignItems="center" gap={1}>
+//                   {tab.label}
+//                   <Label
+//                     sx={{
+//                       backgroundColor: tab.color,
+//                       color: tab.textColor,
+//                       borderRadius: '8px',
+//                       padding: '2px 6px',
+//                     }}
+//                   >
+//                     {tab.count}
+//                   </Label>
+//                 </Box>
+//               }
+//             />
+//           ))}
+//         </Tabs>
+//       </Box>
+
+//       <TableContainer>
+//         <Table>
+//           <TableHead>
+//             <TableRow>
+//               <TableCell>
+//                 <Checkbox />
+//               </TableCell>
+//               <TableCell>Status/Name/Date</TableCell>
+//               <TableCell>Number of Emails/Credits Consumed</TableCell>
+//               <TableCell align="right">Action</TableCell>
+//               <TableCell align="right" />
+//             </TableRow>
+//           </TableHead>
+//           <TableBody>
+//             {filteredData.map((row) => (
+//               <TableRow key={row.id}>
+//                 <TableCell>
+//                   <Checkbox />
+//                 </TableCell>
+//                 <TableCell>
+//                   <Label
+//                     color={
+//                       row.status === 'Unverified'
+//                         ? 'error'
+//                         : row.status === 'Processing'
+//                           ? 'info'
+//                           : 'success'
+//                     }
+//                   >
+//                     {row.status}
+//                   </Label>
+//                   <Typography>{row.name}</Typography>
+//                   <Typography variant="caption" color="textSecondary">
+//                     {row.date}
+//                   </Typography>
+//                 </TableCell>
+//                 <TableCell>
+//                   {`Contains ${row.emails} Emails`}
+//                   {row.credit && (
+//                     <Typography sx={{ color: '#22c55e', fontSize: '12px' }}>{row.credit}</Typography>
+//                   )}
+//                 </TableCell>
+//                 <TableCell align="right">
+//                   <Button color="primary" size="medium" variant="outlined">
+//                     {row.action}
+//                   </Button>
+//                 </TableCell>
+//                 <TableCell align="right">
+//                   <IconButton>
+//                     <Iconify icon="mdi:dots-vertical" />
+//                   </IconButton>
+//                 </TableCell>
+//               </TableRow>
+//             ))}
+//           </TableBody>
+//         </Table>
+//       </TableContainer>
+//     </Card>
+//   );
+// }
+
+import { useState } from 'react';
+
 import {
+  Box,
+  Tab,
+  Card,
+  Tabs,
   Table,
+  Button,
+  TableRow,
+  Checkbox,
   TableBody,
   TableCell,
-  TableContainer,
   TableHead,
-  TableRow,
-  Paper,
-  Checkbox,
-  Stack,
-  Button,
+  TextField,
+  Typography,
   IconButton,
-  Box,
+  TableContainer,
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
+
+import { Label } from 'src/components/label';
 import { Iconify } from 'src/components/iconify';
 
-// Styled label component for statuses
-const StatusLabel = styled(Box)(({ theme, color }) => ({
-  display: 'inline-block',
-  fontSize: '12px',
-  fontWeight: 'bold',
-  padding: '2px 6px',
-  borderRadius: '4px',
-  backgroundColor: theme.palette[color]?.lighter || '#eee',
-  color: theme.palette[color]?.darker || '#000',
-}));
+const STATUS_TABS = [
+  { value: 'all', label: 'All', count: 5, color: 'black', textColor: 'white' },
+  { value: 'verified', label: 'Verified', count: 1, color: '#D1FADF', textColor: '#027A48' },
+  { value: 'processing', label: 'Processing', count: 1, color: '#D1E9FF', textColor: '#175CD3' },
+  { value: 'uploading', label: 'Uploading', count: 1, color: '#FEF0C7', textColor: '#DC6803' },
+  { value: 'unverified', label: 'Unverified', count: 2, color: '#FECDCA', textColor: '#D92D20' },
+];
 
-// Data
-const rows = [
+const TABLE_DATA = [
   {
     id: 1,
     status: 'Uploading',
@@ -36,7 +236,6 @@ const rows = [
     date: 'Oct 23, 2024 17:45:32',
     emails: 128,
     action: 'Uploading',
-    statusColor: 'warning',
   },
   {
     id: 2,
@@ -45,7 +244,6 @@ const rows = [
     date: 'Oct 23, 2024 17:45:32',
     emails: 65,
     action: 'Start Verification',
-    statusColor: 'error',
   },
   {
     id: 3,
@@ -54,77 +252,147 @@ const rows = [
     date: 'Oct 23, 2024 17:45:32',
     emails: 250,
     action: 'Start Verification',
-    statusColor: 'error',
   },
   {
     id: 4,
     status: 'Processing',
     name: 'List 4',
     date: 'Oct 23, 2024 17:45:32',
-    emails: 100,
-    action: 'Start Verification',
-    statusColor: 'info',
+    emails: 65,
+    action: 'Verification In Progress',
+    credit: '65 Credit Consumed',
+  },
+  {
+    id: 5,
+    status: 'Verified',
+    name: 'List 5',
+    date: 'Oct 23, 2024 17:45:32',
+    emails: 653343,
+    action: 'Download Report',
+    credit: '653343 Credit Consumed',
   },
 ];
 
-export default function DashboardTable() {
-  return (
-    <TableContainer component={Paper} sx={{ borderRadius: 2, boxShadow: 1 }}>
-      <Table>
-        {/* Table Header */}
-        <TableHead>
-          <TableRow>
-            <TableCell sx={{ width: '40px', padding: '10px' }}>
-              <Checkbox />
-            </TableCell>
-            <TableCell sx={{ width: '250px', fontWeight: 'bold' }}>Status/Name/Date</TableCell>
-            <TableCell sx={{ width: '250px', fontWeight: 'bold' }}>Number of Emails/Credits Consumed</TableCell>
-            <TableCell sx={{ textAlign: 'right', fontWeight: 'bold' }}>Action</TableCell>
-          </TableRow>
-        </TableHead>
+export default function DashboardListView() {
+  const [selectedTab, setSelectedTab] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
-        {/* Table Body */}
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id} hover>
-              {/* Checkbox */}
-              <TableCell padding="checkbox">
+  const filteredData = TABLE_DATA.filter(
+    (row) =>
+      (selectedTab === 'all' || row.status.toLowerCase() === selectedTab) &&
+      row.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  return (
+    <Card>
+      <Box p={2} justifyContent="space-between" alignItems="center">
+        <Typography variant="h5">Home</Typography>
+        <Typography variant="body2" color="textSecondary">
+          Verify and manage all your uploaded email lists here.
+        </Typography>
+      </Box>
+      <Box p={2} display="flex" alignItems="center" gap={1} width="100%">
+        <TextField
+          variant="outlined"
+          size="small"
+          fullWidth
+          placeholder="Search by email list name..."
+          InputProps={{
+            sx: { height: 54 },
+          }}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <IconButton>
+          <Iconify icon="mdi:dots-vertical" />
+        </IconButton>
+      </Box>
+
+      <Box p={2}>
+        <Tabs value={selectedTab} onChange={(e, newValue) => setSelectedTab(newValue)}>
+          {STATUS_TABS.map((tab) => (
+            <Tab
+              key={tab.value}
+              value={tab.value}
+              label={
+                <Box display="flex" alignItems="center" gap={1}>
+                  {tab.label}
+                  <Label
+                    sx={{
+                      backgroundColor: tab.color,
+                      color: tab.textColor,
+                      borderRadius: '8px',
+                      padding: '2px 6px',
+                    }}
+                  >
+                    {tab.count}
+                  </Label>
+                </Box>
+              }
+            />
+          ))}
+        </Tabs>
+      </Box>
+
+      <TableContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>
                 <Checkbox />
               </TableCell>
-
-              {/* Status, Name, Date */}
-              <TableCell>
-                <Stack spacing={0.3}>
-                  <StatusLabel color={row.statusColor}>{row.status}</StatusLabel>
-                  <Box sx={{ fontWeight: 'bold' }}>{row.name}</Box>
-                  <Box sx={{ fontSize: 12, color: 'text.secondary' }}>{row.date}</Box>
-                </Stack>
-              </TableCell>
-
-              {/* Emails Count */}
-              <TableCell>
-                <Box>Contains {row.emails} Emails</Box>
-              </TableCell>
-
-              {/* Action Button */}
-              <TableCell align="right">
-                <Stack direction="row" justifyContent="flex-end" spacing={1}>
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    color={row.action === 'Uploading' ? 'primary' : 'info'}
+              <TableCell width={305}>Status/Name/Date</TableCell>
+              <TableCell width={316}>Number of Emails/Credits Consumed</TableCell>
+              <TableCell width={227} align="right">Action</TableCell>
+              <TableCell align="right" />
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {filteredData.map((row) => (
+              <TableRow key={row.id} sx={{ '&:hover': { backgroundColor: '#919eab14' } }}>
+                <TableCell>
+                  <Checkbox />
+                </TableCell>
+                <TableCell>
+                  <Label
+                    color={
+                      row.status === 'Unverified'
+                        ? 'error'
+                        : row.status === 'Processing'
+                          ? 'info'
+                          : 'success'
+                    }
                   >
+                    {row.status}
+                  </Label>
+                  <Typography>{row.name}</Typography>
+                  <Typography variant="caption" color="textSecondary">
+                    {row.date}
+                  </Typography>
+                </TableCell>
+                <TableCell>
+                  {`Contains ${row.emails} Emails`}
+                  {row.credit && (
+                    <Typography sx={{ color: '#22c55e', fontSize: '12px' }}>
+                      {row.credit}
+                    </Typography>
+                  )}
+                </TableCell>
+                <TableCell align="right">
+                  <Button color="primary" size="medium" variant="outlined">
                     {row.action}
                   </Button>
-                  <IconButton>
-                    <Iconify icon="eva:more-vertical-fill" />
+                </TableCell>
+                <TableCell >
+                  <IconButton align='left'>
+                    <Iconify icon="mdi:dots-vertical" />
                   </IconButton>
-                </Stack>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Card>
   );
 }

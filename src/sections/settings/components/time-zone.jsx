@@ -2,7 +2,6 @@ import { Box } from '@mui/material';
 
 import { CONFIG } from 'src/config-global';
 
-import TimeZoneSelector from './timeZoneSelector';
 
 // ----------------------------------------------------------------------
 
