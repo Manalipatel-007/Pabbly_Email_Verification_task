@@ -1,80 +1,96 @@
+import { useState } from 'react';
 import { m } from 'framer-motion';
 
-import Badge from '@mui/material/Badge';
-import Avatar from '@mui/material/Avatar';
-import SvgIcon from '@mui/material/SvgIcon';
-import MenuItem from '@mui/material/MenuItem';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import ListItemText from '@mui/material/ListItemText';
+import {
+  Box,
+  List,
+  Popover,
+  TextField,
+  Typography,
+  IconButton,
+  ListItemIcon,
+  ListItemText,
+  ListItemButton,
+} from '@mui/material';
 
-import { fToNow } from 'src/utils/format-time';
-
+import { Iconify } from 'src/components/iconify';
 import { varHover } from 'src/components/animate';
 import { Scrollbar } from 'src/components/scrollbar';
-import { usePopover, CustomPopover } from 'src/components/custom-popover';
 
-// ----------------------------------------------------------------------
+const applications = [
+  { icon: 'mdi:apps', label: 'View All Applications', color: 'error.main' },
+  { icon: 'mdi:puzzle', label: 'Pabbly Connect', color: 'primary.main' },
+  { icon: 'mdi:currency-usd', label: 'Pabbly Subscription Billing', color: 'pink.main' },
+  { icon: 'mdi:email', label: 'Pabbly Email Marketing', color: 'purple.main' },
+  { icon: 'mdi:form-textbox', label: 'Pabbly Form Builder', color: 'orange.main' },
+  { icon: 'mdi:check-circle', label: 'Pabbly Email Verification', color: 'success.main' },
+  { icon: 'mdi:link', label: 'Pabbly Hook', color: 'cyan.main' },
+  { icon: 'mdi:message', label: 'Pabbly Chatflow', color: 'deepPurple.main' },
+];
 
-export function ContactsPopover({ data = [], sx, ...other }) {
-  const popover = usePopover();
+export function ContactsPopover({ sx, ...other }) {
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
 
   return (
-    <>
+    <Box>
       <IconButton
         component={m.button}
         whileTap="tap"
         whileHover="hover"
         variants={varHover(1.05)}
-        onClick={popover.onOpen}
-        sx={{
-          ...(popover.open && { bgcolor: (theme) => theme.vars.palette.action.selected }),
-          ...sx,
-        }}
+        onClick={handleOpen}
+        sx={sx}
         {...other}
       >
-        <SvgIcon>
-          {/* https://icon-sets.iconify.design/solar/users-group-rounded-bold-duotone/  */}
-          <circle cx="15" cy="6" r="3" fill="currentColor" opacity="0.4" />
-          <ellipse cx="16" cy="17" fill="currentColor" opacity="0.4" rx="5" ry="3" />
-          <circle cx="9.001" cy="6" r="4" fill="currentColor" />
-          <ellipse cx="9.001" cy="17.001" fill="currentColor" rx="7" ry="4" />
-        </SvgIcon>
+        <Iconify icon="ri:grid-fill" style={{ width: 30, height: 30 }} />
       </IconButton>
 
-      <CustomPopover
-        open={popover.open}
-        anchorEl={popover.anchorEl}
-        onClose={popover.onClose}
-        slotProps={{
-          arrow: { offset: 20 },
-        }}
-      >
-        <Typography variant="h6" sx={{ p: 1.5 }}>
-          Contacts <span>({data.length})</span>
-        </Typography>
+      <Box sx={{ mr: 4 }}>
+        <Popover
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+          transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+          // sx={{ mt: 2, mr: 4 }}
+        >
+          <Typography variant="h6" sx={{ p: 2 }}>
+            Search Application
+          </Typography>
 
-        <Scrollbar sx={{ height: 320, width: 320 }}>
-          {data.map((contact) => (
-            <MenuItem key={contact.id} sx={{ p: 1 }}>
-              <Badge
-                variant={contact.status}
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                sx={{ mr: 2 }}
-              >
-                <Avatar alt={contact.name} src={contact.avatarUrl} />
-              </Badge>
+          <TextField
+            sx={{ mb: 2 }}
+            fullWidth
+            variant="outlined"
+            placeholder="Search..."
+            size="small"
+          />
 
-              <ListItemText
-                primary={contact.name}
-                secondary={contact.status === 'offline' ? fToNow(contact.lastActivity) : ''}
-                primaryTypographyProps={{ typography: 'subtitle2' }}
-                secondaryTypographyProps={{ typography: 'caption', color: 'text.disabled' }}
-              />
-            </MenuItem>
-          ))}
-        </Scrollbar>
-      </CustomPopover>
-    </>
+          <Scrollbar sx={{ maxHeight: 320, width: 300 }}  borderTop={1}
+            borderColor="divider">
+            <List>
+              {applications.map((app, index) => (
+                <ListItemButton key={index} sx={{ p: 1.2 }}>
+                  <ListItemIcon>
+                    <Iconify icon={app.icon} sx={{ color: app.color, fontSize: 24 }} />
+                  </ListItemIcon>
+                  <ListItemText primary={app.label} primaryTypographyProps={{ variant: 'body2' }} />
+                </ListItemButton>
+              ))}
+            </List>
+          </Scrollbar>
+        </Popover>
+      </Box>
+    </Box>
   );
 }

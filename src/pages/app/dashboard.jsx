@@ -41,6 +41,7 @@ export default function Page() {
           icon_name="consumed-icon.svg"
           icon_color="#10CBF3"
           bg_gradient="#10CBF3"
+          tooltipText="Number of emails credits consumed by your account."
         />
 
         <StatsCards
@@ -49,6 +50,7 @@ export default function Page() {
           icon_name="remaining-icon.svg"
           icon_color="#1D88FA"
           bg_gradient="#1D88FA"
+          tooltipText="Number of emails credits remaining by your account."
         />
 
         <StatsCards
@@ -57,6 +59,7 @@ export default function Page() {
           icon_name="lists-icon.svg"
           icon_color="#28A645"
           bg_gradient="#28A645"
+          tooltipText="Number of emails list uploaded by your account."
         />
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 3 }}>
