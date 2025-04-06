@@ -1,10 +1,10 @@
-import { Box, Grid, Button } from '@mui/material';
+// import { Box, Grid, Button } from '@mui/material';
+
+import { Box, Button, Grid } from "@mui/material";
 
 import { CONFIG } from 'src/config-global';
 import { DashboardContent } from 'src/layouts/dashboard';
-// import { listItems } from 'src/_mock/_mock-team-memberListItem';
-
-import { listItems } from 'src/_mock/_team-memberListItem';
+import { listItems } from "src/_mock/_team-memberListItem";
 
 import { Iconify } from 'src/components/iconify';
 import BigCard from 'src/components/big-card/big-card';
@@ -25,19 +25,20 @@ const { items, style } = listItems;
 export default function Page() {
   return (
     <DashboardContent maxWidth="xl">
+
       <PageHeader
         title="Team Members"
         description="Add team members and share folder(s) access with them from here."
         showButton={false}
       />
-      <Box>
+      <Box sx={{mt : 3}}>
         <SettingsTabs />
       </Box>
 
       <Box
         sx={{
           gap: 3,
-          mt: 4,
+          // mt: 4,
           display: 'grid',
           gridTemplateColumns: { xs: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' },
         }}
@@ -103,5 +104,6 @@ export default function Page() {
         <TeamMembersListView2 />
       </Box>
     </DashboardContent>
+
   );
 }

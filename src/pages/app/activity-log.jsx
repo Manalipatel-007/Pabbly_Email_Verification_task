@@ -29,11 +29,11 @@ export default function Page() {
         />
       </Box>
 
-      <Box sx={{ mt: 3 }}>
+      <Box sx={{ mt: 2 }}>
         <SettingsTabs />
       </Box>
 
-      <Box sx={{ mt: 3 }}>
+      <Box>
         <Grid xs={12} md={8}>
           <BigCard title="Points To Remember" style={style} items={items} img={thumbnailImage} />
         </Grid>

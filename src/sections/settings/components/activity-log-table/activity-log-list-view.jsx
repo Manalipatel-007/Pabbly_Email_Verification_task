@@ -73,7 +73,7 @@ const initialTableData = [
   },
   {
     id: 5,
-    action: 'Modified',
+    action: 'Updated',
     date: 'Oct 23, 2024 17:45:32',
     actor: 'Rahul Sharma',
     section: 'Settings',

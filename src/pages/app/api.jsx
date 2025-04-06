@@ -30,7 +30,7 @@ export default function Page() {
         <SettingsTabs />
       </Box>
       
-      <Box sx={{ mt: 3 }}>
+      <Box >
         <Grid xs={12} md={8}>
           <BigCard title="Points To Remember" style={style} items={items} img={thumbnailImage} />
         </Grid>

@@ -20,9 +20,9 @@ import { Scrollbar } from 'src/components/scrollbar';
 import { TableNoData, TableHeadCustom } from 'src/components/table';
 
 const TABLE_HEAD = [
-  { id: 'status/Date', label: 'Status/Date', width: 295 },
-  { id: 'actor', label: 'Verification Summary', width: 365 },
-  { id: 'credits', label: 'Credits', width: 250 },
+  { id: 'status/Date', label: 'Status/Date', width: 3500 },
+  { id: 'actor', label: 'Verification Summary', width: 3000 },
+  { id: 'credits', label: 'Credits', width: 250 , align:'right'},
 ];
 
 const initialTableData = [
@@ -93,14 +93,16 @@ export default function CreditSummaryListView() {
 
   return (
     <Card>
-      <Box sx={{  p: 2, borderBottom: 1, borderColor: 'divider' }}>
-        <Typography variant="h5">Email Verification Logs</Typography>
+      <Box sx={{ p: 2, borderBottom: 1, borderColor: 'divider' }}>
+        <Typography variant="h5" marginBottom={1}>
+          Email Verification Logs
+        </Typography>
         <Typography variant="body2" color="textSecondary">
           View all email verification activities, including type, date, summary, and credit usage.
         </Typography>
       </Box>
 
-      <Box sx={{ display: 'flex', alignItems: 'center',  gap:2, p: 2, width: '100%' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, p: 2, width: '100%' }}>
         <TextField
           variant="outlined"
           size="small"
@@ -150,7 +152,7 @@ export default function CreditSummaryListView() {
                     <br />
                     <span style={{ color: theme.palette.text.secondary }}>{row.section}</span>
                   </TableCell>
-                  <TableCell>{row.credits}</TableCell>
+                  <TableCell align="right">{row.credits}</TableCell>
                 </TableRow>
               );
             })}

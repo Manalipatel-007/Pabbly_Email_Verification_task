@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 export function API() {
     return (
         <Box>
-        bhghb
+            {/* Add your content here */}
         </Box>
     );
 }

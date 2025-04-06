@@ -32,7 +32,6 @@ export default function Page() {
           gap: 3,
           mt: 4,
           display: 'grid',
-          // gridTemplateColumns: { xs: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' },
           gridTemplateColumns: {
             xs: 'repeat(1, 1fr)', // Mobile: 1 per row
             sm: 'repeat(2, 1fr)', // Tablet: 2 per row

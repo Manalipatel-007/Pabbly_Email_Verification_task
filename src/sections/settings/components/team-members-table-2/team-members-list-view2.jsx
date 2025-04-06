@@ -21,10 +21,10 @@ import { Iconify } from 'src/components/iconify';
 import { Scrollbar } from 'src/components/scrollbar';
 
 const TABLE_HEAD = [
-  { id: 'sharedOn', label: 'Shared On', width: 332},
-  { id: 'email', label: 'Team Member Email', width: 308 },
-  { id: 'permission', label: 'Permission Type', width: 332 },
-  { id: 'accessFolder', label: 'Access Folder' , width: 198},
+  { id: 'sharedOn', label: 'Shared On' },
+  { id: 'email', label: 'Team Member Email', width: 700 },
+  { id: 'permission', label: 'Permission Type', width: 900 },
+  { id: 'accessFolder', label: 'Access Folder' },
 ];
 
 const initialTableData = [
@@ -82,7 +82,9 @@ export function TeamMembersListView2() {
   return (
     <Card>
       <Box sx={{ p: 2, borderBottom: '1px solid #E0E0E0' }}>
-        <Typography variant="h5">Team Members</Typography>
+        <Typography variant="h5" marginBottom={1}>
+          Team Members
+        </Typography>
         <Typography variant="body2" color="textSecondary">
           View and manage team members with assigned permissions. Add new members, filter access,
           and update roles efficiently.
@@ -131,18 +133,18 @@ export function TeamMembersListView2() {
           <TableBody>
             {tableData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
               <TableRow key={row.id}>
-                <TableCell sx={{ width: 60 }}>
+                <TableCell sx={{ width: 48 }}>
                   <Checkbox />
                 </TableCell>
-                <TableCell sx={{ paddingLeft: 2 }}>{row.sharedOn}</TableCell>
+                <TableCell sx={{ paddingRight: 1, width: 350 }}>{row.sharedOn}</TableCell>
                 <TableCell>
                   {row.email}
                   <br />
-                  <Typography variant="body2" color="textSecondary">
+                  <Typography sx={{ width: 298 }} variant="body2" color="textSecondary">
                     {row.company}
                   </Typography>
                 </TableCell>
-                <TableCell>{row.permission}</TableCell>
+                <TableCell sx={{ width: 350 }}>{row.permission}</TableCell>
                 <TableCell sx={{ textAlign: 'right' }}>
                   <Button variant="outlined" color="primary" size="medium">
                     Access Now

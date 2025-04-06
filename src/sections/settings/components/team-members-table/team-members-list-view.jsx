@@ -81,7 +81,7 @@ export function TeamMembersListView() {
   return (
     <Card>
       <Box sx={{ p: 2, borderBottom: '1px solid #E0E0E0' }}>
-        <Typography variant="h5">Team Members</Typography>
+        <Typography variant="h5" marginBottom={1}>Team Members</Typography>
         <Typography variant="body2" color="textSecondary">
           View and manage team members with assigned permissions. Add new members, filter access,
           and update roles efficiently.
