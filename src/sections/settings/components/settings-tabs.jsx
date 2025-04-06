@@ -9,8 +9,8 @@ import { Iconify } from 'src/components/iconify';
 
 import { API } from './api';
 import { TimeZone } from './time-zone';
-import { TeamMembers } from './team-members';
 import { ActivityLog } from './activity-log';
+import { TeamMembers } from './team-members';
 import { CreditsSummary } from './credits-summary';
 
 // ----------------------------------------------------------------------
@@ -59,11 +59,11 @@ export function SettingsTabs() {
         />
       )}
 
-      {tabs.value === 'TeamMembers' && <TeamMembers />}
+      {tabs.value === 'Team Members' && <TeamMembers />}
 
-      {tabs.value === 'ActivityLog' && <ActivityLog socialLinks={_userAbout.socialLinks} />}
+      {tabs.value === 'Activity Log' && <ActivityLog socialLinks={_userAbout.socialLinks} />}
 
-      {tabs.value === 'TimeZone' && <TimeZone />}
+      {tabs.value === 'Time Zone' && <TimeZone />}
     </>
   );
 }

@@ -12,8 +12,8 @@ export const SvgColor = forwardRef(({ src, className, sx, ...other }, ref) => (
     component="span"
     className={svgColorClasses.root.concat(className ? ` ${className}` : '')}
     sx={{
-      width: 24,
-      height: 24,
+      width: 20,
+      height: 20,
       flexShrink: 0,
       display: 'inline-flex',
       bgcolor: 'currentColor',
@@ -24,3 +24,4 @@ export const SvgColor = forwardRef(({ src, className, sx, ...other }, ref) => (
     {...other}
   />
 ));
+

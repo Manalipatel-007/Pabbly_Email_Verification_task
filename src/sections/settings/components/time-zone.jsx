@@ -1,18 +1,9 @@
-import { Box } from '@mui/material';
-
-import { CONFIG } from 'src/config-global';
-
-
-// ----------------------------------------------------------------------
-
-const metadata = { title: `Page three | Dashboard - ${CONFIG.site.name}` };
+import { Box } from "@mui/material";
 
 export function TimeZone() {
-  return (
-    <Box>
-      {/* <Box>
-        <TimeZoneSelector />
-      </Box> */}
-    </Box>
-  );
+    return (
+        <Box>
+        bhghb
+        </Box>
+    );
 }

@@ -2,17 +2,20 @@ import { Box, Grid, Button } from '@mui/material';
 
 import { CONFIG } from 'src/config-global';
 import { DashboardContent } from 'src/layouts/dashboard';
-import { listItems } from 'src/_mock/_dashboardBigCardListItem';
+// import { listItems } from 'src/_mock/_mock-team-memberListItem';
+
+import { listItems } from 'src/_mock/_team-memberListItem';
 
 import { Iconify } from 'src/components/iconify';
 import BigCard from 'src/components/big-card/big-card';
 import PageHeader from 'src/components/page-header/page-header';
 import { StatsCards } from 'src/components/stats-cards/stats-casrds';
 
+import { SettingsTabs } from 'src/sections/settings/components/settings-tabs';
 import { TeamMembersListView } from 'src/sections/settings/components/team-members-table/team-members-list-view';
 import { TeamMembersListView2 } from 'src/sections/settings/components/team-members-table-2/team-members-list-view2';
 
-import thumbnailImage from '../../../public/assets/images/big-card-thumbnails/email-verication-video-thumbnail.png';
+import thumbnailImage from '../../../public/assets/images/big-card-thumbnails/pev_team_member.png';
 
 // ----------------------------------------------------------------------
 
@@ -27,6 +30,9 @@ export default function Page() {
         description="Add team members and share folder(s) access with them from here."
         showButton={false}
       />
+      <Box>
+        <SettingsTabs />
+      </Box>
 
       <Box
         sx={{
@@ -64,8 +70,8 @@ export default function Page() {
       <Box sx={{ mt: 3 }}>
         <Grid xs={12} md={8}>
           <BigCard
-            title="Verification Guidelines"
-            description="Please adhere to the following guidelines when uploading your CSV file:"
+            title="Points To Remember!"
+            // description="Please adhere to the following guidelines when uploading your CSV file:"
             style={style}
             items={items}
             action={

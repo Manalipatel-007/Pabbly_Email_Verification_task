@@ -1,14 +1,14 @@
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
 import { styled, useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 
 import { varAlpha } from 'src/theme/styles';
-
-import { Logo } from 'src/components/logo';
 
 import { HeaderSection } from './header-section';
 import { Searchbar } from '../components/searchbar';
@@ -69,6 +69,7 @@ export function HeaderBase({
   ...other
 }) {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <HeaderSection
@@ -85,7 +86,8 @@ export function HeaderBase({
         leftArea: (
           <>
             {slots?.leftAreaStart}
-            {/* -- Menu button -- */}
+
+            {/* Menu button */}
             {menuButton && (
               <MenuButton
                 data-slot="menu-button"
@@ -97,21 +99,31 @@ export function HeaderBase({
                 }}
               />
             )}
-            {/* -- Logo -- */}
-            <Logo data-slot="logo" />
-            {/* -- Divider -- */}
+
+            {/* Desktop Logo */}
+            {/* {!isMobile && <Logo data-slot="logo" />} */}
+
+            {!isMobile && (
+              <Box
+                component="img"
+                src="/logo/PEV_LOGO.svg"
+                alt="PEV Logo"
+                sx={{ height: 40, width: 'auto', mr: 2 }}
+              />
+            )}
+
+            {/* Mobile Logo */}
+            {isMobile && (
+              <Box
+                component="img"
+                src="/logo/pabbly_logo-icon.svg"
+                alt="Pabbly Logo"
+                sx={{ height: 40, width: 'auto', mr: 2 }}
+              />
+            )}
+
+            {/* Divider (optional, hidden by default) */}
             <StyledDivider data-slot="divider" />
-            {/* -- Logo from public folder -- */}
-            <Box
-              component="img"
-              src="/logo/PEV_LOGO.svg"
-              alt="Pabbly Email Verification Logo"
-              sx={{
-                height: 40,
-                width: 'auto',
-                mr: 2,
-              }}
-            />
 
             {slots?.leftAreaEnd}
           </>
@@ -125,10 +137,10 @@ export function HeaderBase({
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: { xs: 1, sm: 1.5 },
+                gap: { xs: 2, sm: 1.5 },
               }}
             >
-              {/* -- Help link -- */}
+              {/* Help link */}
               {helpLink && (
                 <Link
                   data-slot="help-link"
@@ -141,36 +153,47 @@ export function HeaderBase({
                 </Link>
               )}
 
-              {/* -- Searchbar -- */}
-              {searchbar && <Searchbar data-slot="searchbar" data={data?.nav} />}
-              
+              {/* Searchbar */}
+              {searchbar && (
+                <Tooltip title="Search through your email lists" arrow placement="bottom">
+                  <Box>
+                    <Searchbar
+                      data-slot="searchbar"
+                      data={data?.nav}
+                      placeholder={isMobile ? '' : 'Search folder'}
+                    />
+                  </Box>
+                </Tooltip>
+              )}
 
-              {/* -- Upgrade button -- */}
-              <Button
-                data-slot="upgrade"
-                variant="contained"
-                sx={{
-                  backgroundColor: 'rgb(255, 86, 48)',
-                  color: 'white',
-                  fontWeight: 700,
-                  '&:hover': {
-                    backgroundColor: 'rgb(230, 76, 42)',
-                  },
-                }}
-              >
-                Upgrade
-              </Button>
+              {/* Upgrade Button */}
+              <Tooltip title="Click to upgrade your plan" arrow placement="bottom">
+                <Button
+                  data-slot="upgrade"
+                  variant="contained"
+                  sx={{
+                    backgroundColor: 'rgb(255, 86, 48)',
+                    color: 'white',
+                    fontWeight: 700,
+                    '&:hover': {
+                      backgroundColor: 'rgb(230, 76, 42)',
+                    },
+                  }}
+                >
+                  Upgrade
+                </Button>
+              </Tooltip>
 
-              {/* -- Contacts popover -- */}
+              {/* Contacts popover */}
               {contacts && <ContactsPopover data-slot="contacts" data={data?.contacts} />}
 
-              {/* -- Account drawer -- */}
+              {/* Account drawer */}
               {account && <AccountDrawer data-slot="account" data={data?.account} />}
 
-              {/* -- Sign in button -- */}
+              {/* Sign in button */}
               {signIn && <SignInButton />}
 
-              {/* -- Purchase button -- */}
+              {/* Purchase button */}
               {purchase && (
                 <Button
                   data-slot="purchase"

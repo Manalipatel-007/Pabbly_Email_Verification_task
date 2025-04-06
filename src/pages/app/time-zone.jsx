@@ -22,13 +22,11 @@ export default function Page() {
       />
 
       <Box sx={{ mt: 2 }}>
-        <SettingsTabs/>
+        <SettingsTabs />
       </Box>
       <Box>
-        <TimeZoneSelector  />
+        <TimeZoneSelector />
       </Box>
     </DashboardContent>
   );
 }
-
-

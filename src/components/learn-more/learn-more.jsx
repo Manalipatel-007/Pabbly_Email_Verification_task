@@ -7,6 +7,8 @@ export function LearnMoreTypography({ children, ...props }) {
       {...props}
       sx={{
         color: '#0078de',
+        fontSize: '14px',
+        fontWeight: 500,
         textDecoration: 'underline',
         cursor: 'pointer',
         ...props.sx,

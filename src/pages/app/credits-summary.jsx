@@ -5,8 +5,8 @@ import { DashboardContent } from 'src/layouts/dashboard';
 
 import PageHeader from 'src/components/page-header/page-header';
 import { StatsCards } from 'src/components/stats-cards/stats-casrds';
-import SettingsTabs from 'src/components/settings-tabs/settings-tabs';
 
+import { SettingsTabs } from 'src/sections/settings/components/settings-tabs';
 import CreditSummaryListView from 'src/sections/settings/components/credits-summary-table/credits-summary-list-view';
 
 // ----------------------------------------------------------------------

@@ -46,16 +46,16 @@ export function ContactsPopover({ sx, ...other }) {
       <IconButton
         component={m.button}
         whileTap="tap"
-        whileHover="hover"
+        // whileHover="hover"
         variants={varHover(1.05)}
         onClick={handleOpen}
-        sx={sx}
+        sx={{ border: 1, borderColor: 'divider',borderRadius: 1, ...sx }}
         {...other}
       >
-        <Iconify icon="ri:grid-fill" style={{ width: 30, height: 30 }} />
+        <Iconify icon="ri:grid-fill" style={{ width: 22, height: 22 }} />
       </IconButton>
 
-      <Box sx={{ mr: 4 }}>
+      <Box sx={{ mr: 2 }}>
         <Popover
           open={open}
           anchorEl={anchorEl}
@@ -76,8 +76,7 @@ export function ContactsPopover({ sx, ...other }) {
             size="small"
           />
 
-          <Scrollbar sx={{ maxHeight: 320, width: 300 }}  borderTop={1}
-            borderColor="divider">
+          <Scrollbar sx={{ maxHeight: 320, width: 300 }} borderTop={1} borderColor="divider">
             <List>
               {applications.map((app, index) => (
                 <ListItemButton key={index} sx={{ p: 1.2 }}>

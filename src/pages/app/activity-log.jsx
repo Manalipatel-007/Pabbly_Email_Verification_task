@@ -6,8 +6,8 @@ import { DashboardContent } from 'src/layouts/dashboard';
 
 import BigCard from 'src/components/big-card/big-card';
 import PageHeader from 'src/components/page-header/page-header';
-import SettingsTabs from 'src/components/settings-tabs/settings-tabs';
 
+import { SettingsTabs } from 'src/sections/settings/components/settings-tabs';
 import { ActivityLogListView } from 'src/sections/settings/components/activity-log-table/activity-log-list-view';
 
 import thumbnailImage from '../../../public/assets/images/big-card-thumbnails/activity-log.png';

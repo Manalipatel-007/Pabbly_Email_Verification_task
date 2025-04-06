@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
+import { Card } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import Typography from '@mui/material/Typography'; 
+import Typography from '@mui/material/Typography';
 
 import { LearnMoreTypography } from '../learn-more/learn-more';
 
@@ -34,7 +35,7 @@ export default function HelpCard({ title, description, items, style, action, img
           alignItems: { xs: 'center', md: 'flex-start' },
         }}
       >
-        <Typography variant="h4" sx={{ whiteSpace: 'pre-line', mb: 1 }}>
+        <Typography variant="h6" sx={{ whiteSpace: 'pre-line', mb: 1 }}>
           {title}
         </Typography>
 
@@ -55,30 +56,30 @@ export default function HelpCard({ title, description, items, style, action, img
         {action && action}
       </Box>
 
-      {img && (
-        <Box
-          sx={{
-            p: 1, 
-            position: 'relative',
-            display: 'inline-block',
-          }}
-        >
+      <Card borderRadius={2}>
+        {img && (
           <Box
-            component="img"
-            src={img}
-            alt="Thumbnail"
             sx={{
-              height: 227,
-              width: 500,
+              position: 'relative',
+              width: { xs: '100%', md: 1 },
               cursor: 'pointer',
-              objectFit: 'contain',
-              p: 0,
-              borderRadius: 1.5,
-              
+              mt: { xs: 2, md: 0 },
             }}
-          />
-        </Box>
-      )}
+          >
+            <Box
+              component="img"
+              src={img}
+              alt="Thumbnail"
+              sx={{
+                width: '500px',
+                  height: '100%',
+                  objectFit: 'contain',
+                  display: 'block',
+              }}
+            />
+          </Box>
+        )}
+      </Card>
     </Box>
   );
 }

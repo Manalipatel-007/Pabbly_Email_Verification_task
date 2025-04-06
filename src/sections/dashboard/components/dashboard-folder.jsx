@@ -27,7 +27,14 @@ const folders = [
 
 export default function FolderList() {
   return (
-    <Card elevation={3} sx={{ padding: 3, width: 330, borderRadius: 2 }}>
+    <Card
+      elevation={3}
+      sx={{
+        padding: 3,
+        width: { xs: '100%', md: 330 }, // Full width on mobile & tablet, fixed width on desktop
+        borderRadius: 2,
+      }}
+    >
       {/* Header Section */}
       <Box
         sx={{

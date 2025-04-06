@@ -30,8 +30,8 @@ export default function Page() {
       <Box sx={{ mt: 3 }}>
         <Grid xs={12} md={8}>
           <HelpCard
-            title="Verification Guidelines"
-            description="Please adhere to the following guidelines when uploading your CSV file:"
+            title="Points To Remember!"
+            // description="Please adhere to the following guidelines when uploading your CSV file:"
             style={style}
             items={items}
             action={
@@ -58,12 +58,11 @@ export default function Page() {
       <Box>
         <PageHeading title="Tutorials" />
       </Box>
-      <Box >
+      <Box mt={2} >
         <TutorialCard
           description="Getting Started with Pabbly Email Verification"
           img={thumbnailImage}
-      
-          
+                    
         />
       </Box>
     </DashboardContent>

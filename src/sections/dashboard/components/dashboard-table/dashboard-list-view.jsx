@@ -7,6 +7,7 @@
 //   Tabs,
 //   Table,
 //   Button,
+//   Tooltip,
 //   TableRow,
 //   Checkbox,
 //   TableBody,
@@ -16,6 +17,7 @@
 //   Typography,
 //   IconButton,
 //   TableContainer,
+//   TablePagination,
 // } from '@mui/material';
 
 // import { Label } from 'src/components/label';
@@ -77,6 +79,8 @@
 // export default function DashboardListView() {
 //   const [selectedTab, setSelectedTab] = useState('all');
 //   const [searchQuery, setSearchQuery] = useState('');
+//   const [page, setPage] = useState(0);
+//   const [rowsPerPage, setRowsPerPage] = useState(5);
 
 //   const filteredData = TABLE_DATA.filter(
 //     (row) =>
@@ -84,54 +88,73 @@
 //       row.name.toLowerCase().includes(searchQuery.toLowerCase())
 //   );
 
+//   const paginatedData = filteredData.slice(
+//     page * rowsPerPage,
+//     page * rowsPerPage + rowsPerPage
+//   );
+
+//   const handleChangePage = (event, newPage) => {
+//     setPage(newPage);
+//   };
+
+//   const handleChangeRowsPerPage = (event) => {
+//     setRowsPerPage(parseInt(event.target.value, 10));
+//     setPage(0);
+//   };
+
 //   return (
 //     <Card>
-//       <Box p={2} justifyContent="space-between" alignItems="center">
+//       <Box p={2}>
 //         <Typography variant="h5">Home</Typography>
 //         <Typography variant="body2" color="textSecondary">
 //           Verify and manage all your uploaded email lists here.
 //         </Typography>
 //       </Box>
+
 //       <Box p={2} display="flex" alignItems="center" gap={1} width="100%">
 //         <TextField
 //           variant="outlined"
 //           size="small"
 //           fullWidth
 //           placeholder="Search by email list name..."
-//           InputProps={{
-//             sx: { height: 54 },
-//           }}
+//           InputProps={{ sx: { height: 54 } }}
 //           value={searchQuery}
 //           onChange={(e) => setSearchQuery(e.target.value)}
 //         />
-//         <IconButton>
-//           <Iconify icon="mdi:dots-vertical" />
-//         </IconButton>
+//         <Tooltip title="More options" arrow placement="top">
+//           <IconButton color="primary">
+//             <Iconify icon="mynaui:refresh" />
+//           </IconButton>
+//         </Tooltip>
 //       </Box>
 
 //       <Box p={2}>
 //         <Tabs value={selectedTab} onChange={(e, newValue) => setSelectedTab(newValue)}>
-//           {STATUS_TABS.map((tab) => (
-//             <Tab
-//               key={tab.value}
-//               value={tab.value}
-//               label={
-//                 <Box display="flex" alignItems="center" gap={1}>
-//                   {tab.label}
-//                   <Label
-//                     sx={{
-//                       backgroundColor: tab.color,
-//                       color: tab.textColor,
-//                       borderRadius: '8px',
-//                       padding: '2px 6px',
-//                     }}
-//                   >
-//                     {tab.count}
-//                   </Label>
-//                 </Box>
-//               }
-//             />
-//           ))}
+//           {STATUS_TABS.map((tab) => {
+//             const tabLabel = (
+//               <Box display="flex" alignItems="center" gap={1}>
+//                 {tab.label}
+//                 <Label
+//                   sx={{
+//                     backgroundColor: tab.color,
+//                     color: tab.textColor,
+//                     borderRadius: '8px',
+//                     padding: '2px 6px',
+//                   }}
+//                 >
+//                   {tab.count}
+//                 </Label>
+//               </Box>
+//             );
+
+//             return tab.value === 'all' ? (
+//               <Tab key={tab.value} value={tab.value} label={tabLabel} />
+//             ) : (
+//               <Tooltip key={tab.value} title={`Filter by ${tab.label}`} arrow placement="top">
+//                 <Tab value={tab.value} label={tabLabel} />
+//               </Tooltip>
+//             );
+//           })}
 //         </Tabs>
 //       </Box>
 
@@ -142,58 +165,107 @@
 //               <TableCell>
 //                 <Checkbox />
 //               </TableCell>
-//               <TableCell width={305}>Status/Name/Date</TableCell>
-//               <TableCell width={316}>Number of Emails/Credits Consumed</TableCell>
-//               <TableCell width={227} align="right">Action</TableCell>
-//               <TableCell align="right" />
+//               <TableCell width={305}>
+//                 <Tooltip title="Shows the status, name, and uploaded date" arrow placement="top">
+//                   <span>Status / Name / Date</span>
+//                 </Tooltip>
+//               </TableCell>
+//               <TableCell width={316}>
+//                 <Tooltip title="Total emails and credits used" arrow placement="top">
+//                   <span>Number of Emails / Credits Consumed</span>
+//                 </Tooltip>
+//               </TableCell>
+//               <TableCell width={227} align="right">
+//                 <Tooltip title="Actions available for this list" arrow placement="top">
+//                   <span>Action</span>
+//                 </Tooltip>
+//               </TableCell>
+//               <TableCell align="right">
+//                 <Tooltip title="More actions" arrow placement="top">
+//                   <span />
+//                 </Tooltip>
+//               </TableCell>
 //             </TableRow>
 //           </TableHead>
+
 //           <TableBody>
-//             {filteredData.map((row) => (
+//             {paginatedData.map((row) => (
 //               <TableRow key={row.id} sx={{ '&:hover': { backgroundColor: '#919eab14' } }}>
 //                 <TableCell>
 //                   <Checkbox />
 //                 </TableCell>
+
 //                 <TableCell>
-//                   <Label
-//                     color={
-//                       row.status === 'Unverified'
-//                         ? 'error'
-//                         : row.status === 'Processing'
+//                   <Tooltip title={`Status: ${row.status}`} arrow placement="top-start">
+//                     <Label
+//                       color={
+//                         row.status === 'Unverified'
+//                           ? 'error'
+//                           : row.status === 'Processing'
 //                           ? 'info'
 //                           : 'success'
-//                     }
-//                   >
-//                     {row.status}
-//                   </Label>
-//                   <Typography>{row.name}</Typography>
-//                   <Typography variant="caption" color="textSecondary">
-//                     {row.date}
-//                   </Typography>
-//                 </TableCell>
-//                 <TableCell>
-//                   {`Contains ${row.emails} Emails`}
-//                   {row.credit && (
-//                     <Typography sx={{ color: '#22c55e', fontSize: '12px' }}>
-//                       {row.credit}
+//                       }
+//                     >
+//                       {row.status}
+//                     </Label>
+//                   </Tooltip>
+//                   <Tooltip title={`List Name: ${row.name}`} arrow placement="top-start">
+//                     <Typography>{row.name}</Typography>
+//                   </Tooltip>
+//                   <Tooltip title={`Uploaded on: ${row.date}`} arrow placement="top-start">
+//                     <Typography variant="caption" color="textSecondary">
+//                       {row.date}
 //                     </Typography>
+//                   </Tooltip>
+//                 </TableCell>
+
+//                 <TableCell>
+//                   <Tooltip
+//                     title={`Total emails in this list: ${row.emails}`}
+//                     arrow
+//                     placement="top-start"
+//                   >
+//                     <Typography>{`Contains ${row.emails} Emails`}</Typography>
+//                   </Tooltip>
+//                   {row.credit && (
+//                     <Tooltip title={`Credits consumed: ${row.credit}`} arrow placement="top-start">
+//                       <Typography sx={{ color: '#22c55e', fontSize: '12px' }}>
+//                         {row.credit}
+//                       </Typography>
+//                     </Tooltip>
 //                   )}
 //                 </TableCell>
+
 //                 <TableCell align="right">
-//                   <Button color="primary" size="medium" variant="outlined">
-//                     {row.action}
-//                   </Button>
+//                   <Tooltip title={`Click to ${row.action.toLowerCase()}`} arrow placement="top">
+//                     <Button color="primary" size="medium" variant="outlined">
+//                       {row.action}
+//                     </Button>
+//                   </Tooltip>
 //                 </TableCell>
-//                 <TableCell >
-//                   <IconButton align='left'>
-//                     <Iconify icon="mdi:dots-vertical" />
-//                   </IconButton>
+
+//                 <TableCell>
+//                   <Tooltip title="Click to see more options" arrow placement="top">
+//                     <IconButton>
+//                       <Iconify icon="mdi:dots-vertical" />
+//                     </IconButton>
+//                   </Tooltip>
 //                 </TableCell>
 //               </TableRow>
 //             ))}
 //           </TableBody>
 //         </Table>
 //       </TableContainer>
+
+//       <TablePagination
+//         component="div"
+//         count={filteredData.length}
+//         page={page}
+//         onPageChange={handleChangePage}
+//         rowsPerPage={rowsPerPage}
+//         onRowsPerPageChange={handleChangeRowsPerPage}
+//         rowsPerPageOptions={[5, 10, 25]}
+//       />
 //     </Card>
 //   );
 // }
@@ -217,6 +289,7 @@ import {
   Typography,
   IconButton,
   TableContainer,
+  TablePagination,
 } from '@mui/material';
 
 import { Label } from 'src/components/label';
@@ -278,6 +351,8 @@ const TABLE_DATA = [
 export default function DashboardListView() {
   const [selectedTab, setSelectedTab] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const filteredData = TABLE_DATA.filter(
     (row) =>
@@ -285,37 +360,27 @@ export default function DashboardListView() {
       row.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const paginatedData = filteredData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
   return (
     <Card>
-      <Box p={2}>
-        <Typography variant="h5">Home</Typography>
-
+      <Box p={2} borderBottom="4px" borderColor="rgba(145, 158, 171, 0.2)">
+        <Typography variant="h5" marginBottom={1} >Home</Typography>
         <Typography variant="body2" color="textSecondary">
           Verify and manage all your uploaded email lists here.
         </Typography>
       </Box>
 
-      <Box p={2} display="flex" alignItems="center" gap={1} width="100%">
-        <TextField
-          variant="outlined"
-          size="small"
-          fullWidth
-          placeholder="Search by email list name..."
-          InputProps={{
-            sx: { height: 54 },
-          }}
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <Tooltip title="More options" arrow placement="top">
-          <IconButton color="primary">
-            <Iconify icon="mynaui:refresh" />
-            
-          </IconButton>
-        </Tooltip>
-      </Box>
-
-      <Box p={2}>
+      <Box pl={2}  borderBottom={1} borderColor="rgba(145, 158, 171, 0.2)">
         <Tabs value={selectedTab} onChange={(e, newValue) => setSelectedTab(newValue)}>
           {STATUS_TABS.map((tab) => {
             const tabLabel = (
@@ -326,7 +391,7 @@ export default function DashboardListView() {
                     backgroundColor: tab.color,
                     color: tab.textColor,
                     borderRadius: '8px',
-                    padding: '2px 6px',
+                    // padding: '2px 6px',
                   }}
                 >
                   {tab.count}
@@ -345,6 +410,23 @@ export default function DashboardListView() {
         </Tabs>
       </Box>
 
+       <Box p={2} display="flex" alignItems="center" gap={1} width="100%">
+        <TextField
+          variant="outlined"
+          size="small"
+          fullWidth
+          placeholder="Search by email list name..."
+          InputProps={{ sx: { height: 54 } }}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <Tooltip title="More options" arrow placement="top">
+          <IconButton color="primary">
+            <Iconify icon="mynaui:refresh" />
+          </IconButton>
+        </Tooltip>
+      </Box>
+
       <TableContainer>
         <Table>
           <TableHead>
@@ -352,12 +434,12 @@ export default function DashboardListView() {
               <TableCell>
                 <Checkbox />
               </TableCell>
-              <TableCell width={305}>
+              <TableCell width={310}>
                 <Tooltip title="Shows the status, name, and uploaded date" arrow placement="top">
                   <span>Status / Name / Date</span>
                 </Tooltip>
               </TableCell>
-              <TableCell width={316}>
+              <TableCell width={400}>
                 <Tooltip title="Total emails and credits used" arrow placement="top">
                   <span>Number of Emails / Credits Consumed</span>
                 </Tooltip>
@@ -376,7 +458,7 @@ export default function DashboardListView() {
           </TableHead>
 
           <TableBody>
-            {filteredData.map((row) => (
+            {paginatedData.map((row) => (
               <TableRow key={row.id} sx={{ '&:hover': { backgroundColor: '#919eab14' } }}>
                 <TableCell>
                   <Checkbox />
@@ -423,7 +505,7 @@ export default function DashboardListView() {
                   )}
                 </TableCell>
 
-                <TableCell align="right">
+                <TableCell align="right" marginLeft={3}>
                   <Tooltip title={`Click to ${row.action.toLowerCase()}`} arrow placement="top">
                     <Button color="primary" size="medium" variant="outlined">
                       {row.action}
@@ -443,6 +525,25 @@ export default function DashboardListView() {
           </TableBody>
         </Table>
       </TableContainer>
+
+      <Box
+        sx={{
+          borderTop: '1px dashed #919eab33',
+          px: 2,
+        }}
+      >
+        <TablePagination
+          component="div"
+          count={filteredData.length}
+          page={page}
+          onPageChange={handleChangePage}
+          rowsPerPage={rowsPerPage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          rowsPerPageOptions={[5, 10, 25]}
+          showFirstButton
+          showLastButton
+        />
+      </Box>
     </Card>
   );
 }

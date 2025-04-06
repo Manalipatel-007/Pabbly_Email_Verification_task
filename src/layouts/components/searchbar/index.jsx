@@ -127,9 +127,14 @@ export function Searchbar({ data: navItems = [], sx, ...other }) {
           />
         </SvgIcon>
       </IconButton>
-      <Typography variant="body2" color="text.disabled" sx={{ mr: '8px' }}>
+      {/* <Typography variant="body2" color="text.disabled" sx={{ mr: '8px' }}>
         Search Folder
-      </Typography>
+      </Typography> */}
+      <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+        <Typography variant="body2" color="text.disabled" sx={{ mr: '8px' }}>
+          Search Folder
+        </Typography>
+      </Box>
 
       <Label
         sx={{

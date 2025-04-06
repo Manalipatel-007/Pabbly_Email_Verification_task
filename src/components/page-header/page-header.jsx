@@ -5,24 +5,30 @@ import { LearnMoreTypography } from '../learn-more/learn-more';
 
 export default function PageHeader({ title, description, showButton = true, buttonTitle }) {
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 4 }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: { xs: 'column', md: 'row' },
+        justifyContent: 'space-between',
+        alignItems: { xs: 'flex-start', md: 'center' },
+        gap: 2,
+        mt: 4,
+      }}
+    >
+      {/* Left section with title and description */}
       <Box>
-        <Box>
-          <Typography variant="h4" sx={{ mb: 1 }}>
-            {title}
-          </Typography>
-        </Box>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Box>
-            <Typography sx={{ color: 'text.secondary' }}>{description}</Typography>
-          </Box>
-          <Box>
-            <LearnMoreTypography />
-          </Box>
+        <Typography variant="h4" sx={{ mb: 1 }}>
+          {title}
+        </Typography>
+
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 1 }}>
+          <Typography sx={{ color: 'text.secondary' }}>{description}</Typography>
+          <LearnMoreTypography />
         </Box>
       </Box>
 
-      {showButton && ( // Ensure the button is only rendered when showButton is true
+      {/* Button section */}
+      {showButton && (
         <Box>
           <Button
             variant="contained"
