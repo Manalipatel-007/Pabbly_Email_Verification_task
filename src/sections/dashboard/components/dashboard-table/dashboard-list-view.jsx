@@ -244,7 +244,7 @@ export default function DashboardListView() {
                   )}
                 </TableCell>
 
-                <TableCell align="right" width={227}>
+                <TableCell align="right">
                   <Tooltip title={`Click to ${row.action.toLowerCase()}`} arrow placement="top">
                     <Button color="primary" size="medium" variant="outlined">
                       {row.action}

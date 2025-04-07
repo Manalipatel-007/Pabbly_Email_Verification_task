@@ -91,7 +91,7 @@ const TimeZoneSelector = () => {
           </Select>
         </FormControl>
 
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" fontSize="12px" color="text.secondary">
           Select the time zone that matches your current location.{' '}
           <a href="#" style={{ textDecoration: 'underline', fontSize: '12px', color: '#078DEE' }}>
             Learn more

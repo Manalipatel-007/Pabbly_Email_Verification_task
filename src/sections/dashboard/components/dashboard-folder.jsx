@@ -244,8 +244,8 @@ export default function FolderList() {
             sx={{
               borderBottom:
                 folder.name === 'Pabbly Hook' ? '1px dashed rgba(0, 0, 0, 0.12)' : 'none',
-              mb: 1.2,
-              pb: folder.name === 'Pabbly Hook' ? 2 : 0,
+              mb: 0.9,
+              pb: folder.name === 'Pabbly Hook' ? 2 : 0.6,
               '&:hover': { backgroundColor: '#F4F6F8' },
               borderRadius: 1,
               alignItems: 'center',
