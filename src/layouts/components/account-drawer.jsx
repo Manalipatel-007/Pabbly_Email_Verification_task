@@ -58,6 +58,7 @@ export function AccountDrawer({ data = [], sx, ...other }) {
 
   const renderAvatar = (
     <AnimateAvatar
+      
       width={96}
       slotProps={{
         avatar: { src: user?.photoURL, alt: user?.displayName },

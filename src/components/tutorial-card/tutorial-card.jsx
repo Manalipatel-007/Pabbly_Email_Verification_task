@@ -9,7 +9,8 @@ export default function TutorialCard({ description, img, sx, ...other }) {
   return (
     <Box
       sx={{
-        width: 310,
+        width: '100%',
+        maxWidth: 310,
         p: 1,
         gap: 1,
         borderRadius: 2,
@@ -70,21 +71,21 @@ export default function TutorialCard({ description, img, sx, ...other }) {
             />
             <style>
               {`
-      @keyframes pulse {
-        0% {
-          box-shadow: 0 0 0 0 rgba(7, 141, 238, 0.3);
-          transform: scale(1);
-        }
-        50% {
-          box-shadow: 0 0 0 10px rgba(7, 141, 238, 0.1);
-          transform: scale(1.0565);
-        }
-        100% {
-          box-shadow: 0 0 0 0 rgba(7, 141, 238, 0);
-          transform: scale(1);
-        }
-      }
-    `}
+                @keyframes pulse {
+                  0% {
+                    box-shadow: 0 0 0 0 rgba(7, 141, 238, 0.3);
+                    transform: scale(1);
+                  }
+                  50% {
+                    box-shadow: 0 0 0 10px rgba(7, 141, 238, 0.1);
+                    transform: scale(1.0565);
+                  }
+                  100% {
+                    box-shadow: 0 0 0 0 rgba(7, 141, 238, 0);
+                    transform: scale(1);
+                  }
+                }
+              `}
             </style>
           </Box>
         </Box>

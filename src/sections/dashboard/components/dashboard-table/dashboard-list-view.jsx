@@ -102,13 +102,15 @@ export default function DashboardListView() {
   return (
     <Card>
       <Box p={2} borderBottom="4px" borderColor="rgba(145, 158, 171, 0.2)">
-        <Typography variant="h5" marginBottom={1} >Home</Typography>
+        <Typography variant="h5" marginBottom={1}>
+          Home
+        </Typography>
         <Typography variant="body2" color="textSecondary">
           Verify and manage all your uploaded email lists here.
         </Typography>
       </Box>
 
-      <Box pl={2}  borderBottom={1} borderColor="rgba(145, 158, 171, 0.2)">
+      <Box pl={2} borderBottom={1} borderColor="rgba(145, 158, 171, 0.2)">
         <Tabs value={selectedTab} onChange={(e, newValue) => setSelectedTab(newValue)}>
           {STATUS_TABS.map((tab) => {
             const tabLabel = (
@@ -119,7 +121,6 @@ export default function DashboardListView() {
                     backgroundColor: tab.color,
                     color: tab.textColor,
                     borderRadius: '8px',
-                    // padding: '2px 6px',
                   }}
                 >
                   {tab.count}
@@ -127,18 +128,26 @@ export default function DashboardListView() {
               </Box>
             );
 
+            const tabStyle = {
+              borderBottom: selectedTab === tab.value ? '3px solid #000' : '3px solid transparent',
+              borderRadius: 0,
+              mx: 0.5,
+              textTransform: 'none',
+              minHeight: 48,
+            };
+
             return tab.value === 'all' ? (
-              <Tab key={tab.value} value={tab.value} label={tabLabel} />
+              <Tab key={tab.value} value={tab.value} label={tabLabel} sx={tabStyle} />
             ) : (
               <Tooltip key={tab.value} title={`Filter by ${tab.label}`} arrow placement="top">
-                <Tab value={tab.value} label={tabLabel} />
+                <Tab value={tab.value} label={tabLabel} sx={tabStyle} />
               </Tooltip>
             );
           })}
         </Tabs>
       </Box>
 
-       <Box p={2} display="flex" alignItems="center" gap={1} width="100%">
+      <Box p={2} display="flex" alignItems="center" gap={1} width="100%">
         <TextField
           variant="outlined"
           size="small"
@@ -162,7 +171,7 @@ export default function DashboardListView() {
               <TableCell>
                 <Checkbox />
               </TableCell>
-              <TableCell width={310}>
+              <TableCell width={320}>
                 <Tooltip title="Shows the status, name, and uploaded date" arrow placement="top">
                   <span>Status / Name / Date</span>
                 </Tooltip>
@@ -177,7 +186,7 @@ export default function DashboardListView() {
                   <span>Action</span>
                 </Tooltip>
               </TableCell>
-              <TableCell align="right">
+              <TableCell>
                 <Tooltip title="More actions" arrow placement="top">
                   <span />
                 </Tooltip>
@@ -222,18 +231,20 @@ export default function DashboardListView() {
                     arrow
                     placement="top-start"
                   >
-                    <Typography>{`Contains ${row.emails} Emails`}</Typography>
+                    <Typography
+                      sx={{ fontSize: '14px' }}
+                    >{`Contains ${row.emails} Emails`}</Typography>
                   </Tooltip>
                   {row.credit && (
                     <Tooltip title={`Credits consumed: ${row.credit}`} arrow placement="top-start">
-                      <Typography sx={{ color: '#22c55e', fontSize: '12px' }}>
+                      <Typography sx={{ color: '#22c55e', fontSize: '14px' }}>
                         {row.credit}
                       </Typography>
                     </Tooltip>
                   )}
                 </TableCell>
 
-                <TableCell align="right" marginLeft={3}>
+                <TableCell align="right" width={227}>
                   <Tooltip title={`Click to ${row.action.toLowerCase()}`} arrow placement="top">
                     <Button color="primary" size="medium" variant="outlined">
                       {row.action}

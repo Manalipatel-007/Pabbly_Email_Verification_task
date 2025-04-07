@@ -403,6 +403,7 @@ export function ActivityLogListView() {
                     <Typography
                       variant="body2"
                       color="primary"
+                      align="right"
                       sx={{ cursor: 'pointer', wordBreak: 'break-all' }}
                     >
                       {row.data}

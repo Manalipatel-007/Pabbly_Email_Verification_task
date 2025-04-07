@@ -58,11 +58,10 @@ export default function Page() {
       <Box>
         <PageHeading title="Tutorials" />
       </Box>
-      <Box mt={2} >
+      <Box mt={3}>
         <TutorialCard
           description="Getting Started with Pabbly Email Verification"
           img={thumbnailImage}
-                    
         />
       </Box>
     </DashboardContent>

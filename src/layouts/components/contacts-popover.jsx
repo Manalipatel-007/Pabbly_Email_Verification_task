@@ -49,7 +49,7 @@ export function ContactsPopover({ sx, ...other }) {
         // whileHover="hover"
         variants={varHover(1.05)}
         onClick={handleOpen}
-        sx={{ border: 1, borderColor: 'divider',borderRadius: 1, ...sx }}
+        sx={{ border: 1, borderColor: 'divider', borderRadius: 1, marginRight: '5px', ...sx }}
         {...other}
       >
         <Iconify icon="ri:grid-fill" style={{ width: 22, height: 22 }} />

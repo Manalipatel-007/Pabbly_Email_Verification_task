@@ -15,16 +15,14 @@ export default function PageHeader({ title, description, showButton = true, butt
         mt: 4,
       }}
     >
-      {/* Left section with title and description */}
       <Box>
         <Typography variant="h4" sx={{ mb: 1 }}>
           {title}
         </Typography>
 
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 1 }}>
-          <Typography sx={{ color: 'text.secondary' }}>{description}</Typography>
-          <LearnMoreTypography />
-        </Box>
+        <Typography sx={{ color: 'text.secondary' }}>
+          {description} <LearnMoreTypography />
+        </Typography>
       </Box>
 
       {/* Button section */}
