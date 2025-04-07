@@ -23,7 +23,7 @@ export default function Page() {
       />
 
       <Box sx={{ mt: 2 }}>
-        <SettingsTabs />
+        <SettingsTabs/>
       </Box>
       <Box
         sx={{
@@ -61,5 +61,7 @@ export default function Page() {
         <CreditSummaryListView/>
       </Box>
     </DashboardContent>
+   
+
   );
 }

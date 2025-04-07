@@ -4,26 +4,26 @@ export const TABS = [
   {
     value: 'Credits Summary',
     label: 'Credits Summary',
-    icon: <Iconify icon="solar:user-id-bold" width={24} />,
+    icon: <Iconify icon="clarity:rack-server-solid" width={24} />,
   },
   {
     value: 'API',
     label: 'API',
-    icon: <Iconify icon="solar:bill-list-bold" width={24} />,
+    icon: <Iconify icon="pajamas:api" width={24} />,
   },
   {
     value: 'Team Members',
     label: 'Team Members',
-    icon: <Iconify icon="solar:bell-bing-bold" width={24} />,
+    icon: <Iconify icon="fluent:people-team-16-filled" width={24} />,
   },
   {
     value: 'Activity Log',
     label: 'Activity Log',
-    icon: <Iconify icon="solar:share-bold" width={24} />,
+    icon: <Iconify icon="famicons:bag" width={24} />,
   },
   {
     value: 'Time Zone',
     label: 'Time Zone',
-    icon: <Iconify icon="ic:round-vpn-key" width={24} />,
+    icon: <Iconify icon="stash:globe-timezone" width={24} />,
   },
 ];

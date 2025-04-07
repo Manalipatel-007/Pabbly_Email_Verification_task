@@ -49,11 +49,6 @@ export default function BigCard({ title, description, items, style, action, img,
           {description}
         </Typography>
 
-        {/* <Box>
-          <Typography variant="subtitle1" fontWeight="bold" mt={2}>
-            Verification Guidelines
-          </Typography>
-        </Box> */}
 
         <Box component="ul" sx={style} mb={2} p={1}>
           {items.map((item, index) => (
@@ -70,7 +65,7 @@ export default function BigCard({ title, description, items, style, action, img,
       </Box>
 
       {/* Image Section */}
-      <Card borderRadius={2}>
+      <Card borderRadius={2} alignItems="center">
         {img && (
           <Box
             sx={{

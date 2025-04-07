@@ -30,7 +30,7 @@ export default function Page() {
       <Box
         sx={{
           gap: 3,
-          mt: 4,
+          mt: 5,
           display: 'grid',
           gridTemplateColumns: {
             xs: 'repeat(1, 1fr)', // Mobile: 1 per row
@@ -67,48 +67,11 @@ export default function Page() {
           tooltipText="Number of emails list uploaded by your account."
         />
       </Box>
-      {/* <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 3 }}>
-        <Box sx={{ mt: 3 }}>
-          <FolderList />
-        </Box>
-
-        <Box>
-          <Box sx={{ mt: 3 }}>
-            <Grid xs={12} md={8}>
-              <BigCard
-                title="Verification Guidelines"
-                description="Please adhere to the following guidelines when uploading your CSV file:"
-                style={style}
-                items={items}
-                action={
-                  <Button
-                    startIcon={
-                      <Iconify
-                        icon="heroicons:plus-circle-16-solid"
-                        style={{ width: 18, height: 18 }}
-                      />
-                    }
-                    endIcon={<Iconify icon="formkit:down" style={{ width: 18, height: 18 }} />}
-                    variant="outlined"
-                    color="primary"
-                    size="large"
-                  >
-                    Verify Email
-                  </Button>
-                }
-                img={thumbnailImage}
-              />
-            </Grid>
-          </Box>
-          <Box sx={{ mt: 3 }}>
-            <DashboardListView />
-          </Box>
-        </Box>
-      </Box> */}
       <Box
+
   sx={{
     display: 'flex',
-    flexDirection: { xs: 'column', md: 'row' }, // Stack on mobile/tablet, side-by-side on desktop
+    flexDirection: { xs: 'column', md: 'row' }, 
     justifyContent: 'space-between',
     gap: 3,
     mt: 3,

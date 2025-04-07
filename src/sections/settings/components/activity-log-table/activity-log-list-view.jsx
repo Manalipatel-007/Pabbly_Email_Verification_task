@@ -1,193 +1,431 @@
+// import { useState } from 'react';
+
+// import {
+//   Box,
+//   Card,
+//   Table,
+//   Button,
+//   TableRow,
+//   useTheme,
+//   TableBody,
+//   TableCell,
+//   Typography,
+// } from '@mui/material';
+
+// import { useBoolean } from 'src/hooks/use-boolean';
+
+// import { Iconify } from 'src/components/iconify';
+// import { Scrollbar } from 'src/components/scrollbar';
+// import { TableNoData, TableHeadCustom } from 'src/components/table';
+
+// const TABLE_HEAD = [
+//   { id: 'actionDate', label: 'Action/Date', width: 400 },
+//   { id: 'actor', label: 'Actor', width: 450 },
+//   { id: 'section', label: 'Section/Source', width: 550 },
+//   { id: 'data', label: 'Activity Data', width: 300, align: 'right' },
+// ];
+
+// const initialTableData = [
+//   {
+//     id: 1,
+//     status: 'Created',
+//     date: 'Oct 23, 2024 17:45:32',
+//     name: 'Hardik Pradhan',
+//     email: 'hardik.pradhan@pabbly.com',
+//     section: 'Dashboard',
+//     source: 'USER',
+//     data: '67764b1fb9e637ld99c28a37',
+//   },
+//   {
+//     id: 2,
+//     status: 'Deleted',
+//     date: 'Oct 23, 2024 17:45:32',
+//     name: 'Ankit Mandli',
+//     email: 'ankit.mandli@pabbly.com',
+//     section: 'Dashboard',
+//     source: 'USER',
+//     data: '67764b1fb9e637ld99c28a37',
+//   },
+//   {
+//     id: 3,
+//     status: 'Created',
+//     date: 'Oct 23, 2024 17:45:32',
+//     name: 'Nikhil Patel',
+//     email: 'nikhil.patel@pabbly.com',
+//     section: 'Dashboard',
+//     source: 'API',
+//     data: '67764b1fb9e637ld99c28a37',
+//   },
+//   {
+//     id: 4,
+//     status: 'Updated',
+//     date: 'Oct 23, 2024 17:45:32',
+//     name: 'Ankit Mandli',
+//     email: 'ankit.mandli@pabbly.com',
+//     section: 'Team Member',
+//     source: 'USER',
+//     data: '67764b1fb9e637ld99c28a37',
+//   },
+//   {
+//     id: 5,
+//     status: 'Updated',
+//     date: 'Oct 23, 2024 17:45:32',
+//     name: 'Ankit Mandli',
+//     email: 'ankit.mandli@pabbly.com',
+//     section: 'API',
+//     source: 'USER',
+//     data: '67764b1fb9e637ld99c28a37',
+//   },
+// ];
+
+// const getStatusStyles = (status, theme) => {
+//   switch (status) {
+//     case 'Created':
+//       return { bg: theme.palette.success.lighter, color: theme.palette.success.darker };
+//     case 'Deleted':
+//       return { bg: theme.palette.error.lighter, color: theme.palette.error.darker };
+//     case 'Updated':
+//       return { bg: theme.palette.warning.lighter, color: theme.palette.warning.darker };
+//     default:
+//       return { bg: theme.palette.grey[300], color: theme.palette.text.primary };
+//   }
+// };
+
+// export function ActivityLogListView() {
+//   const theme = useTheme();
+//   const filterDialog = useBoolean();
+//   const [tableData] = useState(initialTableData);
+
+//   return (
+//     <Card>
+//       <Box
+//         sx={{
+//           p: 2,
+//           display: 'flex',
+//           justifyContent: 'space-between',
+//           mb: 1,
+//         }}
+//       >
+//         <Box>
+//           <Typography sx={{ mb: 1 }} variant="h6">
+//             Activity Log
+//           </Typography>
+//           <Typography variant="body2" color="text.secondary">
+//             Track all activities in your Pabbly Email Verification, including user actions and API
+//             requests. Monitor created, updated, and deleted actions to ensure transparency and
+//             security.
+//           </Typography>
+//         </Box>
+//         <Button
+//           variant="text"
+//           onClick={filterDialog.onTrue}
+//           sx={{ color: theme.palette.primary.main, fontWeight: 'bold' }}
+//           startIcon={<Iconify icon="mdi:filter" />}
+//         >
+//           Filters
+//         </Button>
+//       </Box>
+
+//       <Scrollbar>
+//         <Table sx={{ minWidth: 960 }}>
+//           <TableHeadCustom headLabel={TABLE_HEAD} />
+
+//           <TableBody>
+//             {tableData.map((row) => {
+//               const statusStyle = getStatusStyles(row.status, theme);
+
+//               return (
+//                 <TableRow key={row.id}>
+//                   {/* Action/Date */}
+//                   <TableCell>
+//                     <Box
+//                       sx={{
+//                         backgroundColor: statusStyle.bg,
+//                         color: statusStyle.color,
+//                         fontWeight: 600,
+//                         fontSize: 12,
+//                         display: 'inline-block',
+//                         px: 1.5,
+//                         py: 0.5,
+//                         borderRadius: 1,
+//                         mb: 0.5,
+//                       }}
+//                     >
+//                       {row.status}
+//                     </Box>
+//                     <Typography variant="body2">{row.date}</Typography>
+//                   </TableCell>
+
+//                   {/* Actor */}
+//                   <TableCell>
+//                     <Typography variant="body2" fontWeight="500">
+//                       {row.name}
+//                     </Typography>
+//                     <Typography variant="body2" color="text.secondary">
+//                       {row.email}
+//                     </Typography>
+//                   </TableCell>
+
+//                   {/* Section/Source */}
+//                   <TableCell>
+//                     <Typography variant="body2" fontWeight="500">
+//                       {row.section}
+//                     </Typography>
+//                     <Typography variant="body2" color="text.secondary">
+//                       {row.source}
+//                     </Typography>
+//                   </TableCell>
+
+//                   {/* Activity Data */}
+//                   <TableCell>
+//                     <Typography
+//                       variant="body2"
+//                       color="primary"
+//                       sx={{ cursor: 'pointer', wordBreak: 'break-all' }}
+//                     >
+//                       {row.data}
+//                     </Typography>
+//                   </TableCell>
+//                 </TableRow>
+//               );
+//             })}
+
+//             <TableNoData notFound={!tableData.length} />
+//           </TableBody>
+//         </Table>
+//       </Scrollbar>
+//     </Card>
+//   );
+// }
+
 import { useState } from 'react';
-import { Icon } from '@iconify/react'; // Import Iconify
 
 import {
   Box,
   Card,
   Table,
   Button,
-  Select,
-  Dialog,
-  MenuItem,
+  TableRow,
+  useTheme,
   TableBody,
-  TextField,
-  InputLabel,
+  TableCell,
   Typography,
-  FormControl,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
+  TablePagination,
 } from '@mui/material';
 
 import { useBoolean } from 'src/hooks/use-boolean';
-import { useSetState } from 'src/hooks/use-set-state';
 
+import { Iconify } from 'src/components/iconify';
 import { Scrollbar } from 'src/components/scrollbar';
 import { TableNoData, TableHeadCustom } from 'src/components/table';
 
-import { ActivityLogTableRow } from './activity-log-table-row';
-
 const TABLE_HEAD = [
-  { id: 'Action/Date', label: 'Action/Date', width: 295 },
-  { id: 'Actor', label: 'Actor', width: 365 },
-  { id: 'Section/Source', label: 'Section/Source', width: 250 },
-  { id: 'Activity Data', label: 'Activity Data', width: 383, align: 'right' }, // Align Activity Data column to the right
+  { id: 'actionDate', label: 'Action/Date', width: 400 },
+  { id: 'actor', label: 'Actor', width: 450 },
+  { id: 'section', label: 'Section/Source', width: 550 },
+  { id: 'data', label: 'Activity Data', width: 300, align: 'right' },
 ];
 
 const initialTableData = [
   {
     id: 1,
-    action: 'Created',
+    status: 'Created',
     date: 'Oct 23, 2024 17:45:32',
-    actor: 'Hardik Pradhan',
+    name: 'Hardik Pradhan',
+    email: 'hardik.pradhan@pabbly.com',
     section: 'Dashboard',
     source: 'USER',
-    activityData: '67764b1fb9e6371d99c28a37',
+    data: '67764b1fb9e637ld99c28a37',
   },
   {
     id: 2,
-    action: 'Deleted',
+    status: 'Deleted',
     date: 'Oct 23, 2024 17:45:32',
-    actor: 'Ankit Mandli',
+    name: 'Ankit Mandli',
+    email: 'ankit.mandli@pabbly.com',
     section: 'Dashboard',
     source: 'USER',
-    activityData: '67764b1fb9e6371d99c28a37',
+    data: '67764b1fb9e637ld99c28a37',
   },
   {
     id: 3,
-    action: 'Created',
+    status: 'Created',
     date: 'Oct 23, 2024 17:45:32',
-    actor: 'Nikhil Patel',
+    name: 'Nikhil Patel',
+    email: 'nikhil.patel@pabbly.com',
     section: 'Dashboard',
     source: 'API',
-    activityData: '67764b1fb9e6371d99c28a37',
+    data: '67764b1fb9e637ld99c28a37',
   },
   {
     id: 4,
-    action: 'Updated',
+    status: 'Updated',
     date: 'Oct 23, 2024 17:45:32',
-    actor: 'Ankit Mandli',
+    name: 'Ankit Mandli',
+    email: 'ankit.mandli@pabbly.com',
     section: 'Team Member',
     source: 'USER',
-    activityData: '67764b1fb9e6371d99c28a37',
+    data: '67764b1fb9e637ld99c28a37',
   },
   {
     id: 5,
-    action: 'Updated',
+    status: 'Updated',
     date: 'Oct 23, 2024 17:45:32',
-    actor: 'Rahul Sharma',
-    section: 'Settings',
-    source: 'API',
-    activityData: '67764b1fb9e6371d99c28a37',
+    name: 'Ankit Mandli',
+    email: 'ankit.mandli@pabbly.com',
+    section: 'API',
+    source: 'USER',
+    data: '67764b1fb9e637ld99c28a37',
   },
 ];
 
+const getStatusStyles = (status, theme) => {
+  switch (status) {
+    case 'Created':
+      return { bg: theme.palette.success.lighter, color: theme.palette.success.darker };
+    case 'Deleted':
+      return { bg: theme.palette.error.lighter, color: theme.palette.error.darker };
+    case 'Updated':
+      return { bg: theme.palette.warning.lighter, color: theme.palette.warning.darker };
+    default:
+      return { bg: theme.palette.grey[300], color: theme.palette.text.primary };
+  }
+};
+
 export function ActivityLogListView() {
+  const theme = useTheme();
   const filterDialog = useBoolean();
   const [tableData] = useState(initialTableData);
-  const filters = useSetState({ action: '', actor: '', section: '', dateRange: '' });
 
-  const dataFiltered = tableData
-    .filter(
-      (row) =>
-        (!filters.state.action || row.action === filters.state.action) &&
-        (!filters.state.actor || row.actor === filters.state.actor) &&
-        (!filters.state.section || row.section === filters.state.section)
-    )
-    .slice(0, 5);
+  // Pagination states
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(4);
+
+  const handleChangePage = (event, newPage) => setPage(newPage);
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+  const paginatedData = tableData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   return (
-    <>
-      <Card>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            mb: 2,
-            p: 2,
-          }}
-        >
-          <Box>
-            <Typography variant="h5">Activity Log</Typography>
-            <Typography variant="body2" color="textSecondary">
-              Track all activities in your Pabbly Email Verification, including user actions and API
-              requests. Monitor created, updated, and deleted actions to ensure transparency and
-              security.
-            </Typography>
-          </Box>
-          <Button
-            variant="text"
-            onClick={filterDialog.onTrue}
-            sx={{ color: 'blue', fontWeight: 'bold', p: 2, mr: 2 }}
-            startIcon={<Icon icon="mdi:filter" />}
-          >
-            Filters
-          </Button>
+    <Card>
+      <Box
+        sx={{
+          p: 2,
+          display: 'flex',
+          justifyContent: 'space-between',
+          mb: 1,
+        }}
+      >
+        <Box>
+          <Typography sx={{ mb: 1 }} variant="h6">
+            Activity Log
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Track all activities in your Pabbly Email Verification, including user actions and API
+            requests. Monitor created, updated, and deleted actions to ensure transparency and
+            security.
+          </Typography>
         </Box>
-        <Scrollbar>
-          <Table sx={{ minWidth: 960 }}>
-            <TableHeadCustom
-              headLabel={TABLE_HEAD}
-              sx={{
-                '& th:last-child': { pr: 3, textAlign: 'right' }, // Add padding-right and align text to the right for the last header cell
-              }}
-            />
-            <TableBody>
-              {dataFiltered.map((row) => (
-                <ActivityLogTableRow
-                  key={row.id}
-                  row={row}
-                  sx={{
-                    textAlign: 'right',
-                    pr: 3,
-                  }}
-                />
-              ))}
-              <TableNoData notFound={!dataFiltered.length} />
-            </TableBody>
-          </Table>
-        </Scrollbar>
-      </Card>
+        <Button
+          variant="text"
+          onClick={filterDialog.onTrue}
+          sx={{ color: theme.palette.primary.main, fontWeight: 'bold' }}
+          startIcon={<Iconify icon="mdi:filter" />}
+        >
+          Filters
+        </Button>
+      </Box>
 
-      <Dialog open={filterDialog.value} onClose={filterDialog.onFalse} maxWidth="md" fullWidth>
-        <DialogTitle>Filter</DialogTitle>
-        <DialogContent>
-          <Box display="grid" gridTemplateColumns="repeat(2, 1fr)" gap={2}>
-            <TextField label="Date Range" placeholder="Between" fullWidth disabled />
-            <TextField type="date" label="Start Date" fullWidth />
-            <TextField type="date" label="End Date" fullWidth />
-            <FormControl fullWidth>
-              <InputLabel>Status</InputLabel>
-              <Select
-                value={filters.state.action}
-                onChange={(e) => filters.setState({ action: e.target.value })}
-              >
-                <MenuItem value="">Select</MenuItem>
-                <MenuItem value="Created">Created</MenuItem>
-                <MenuItem value="Deleted">Deleted</MenuItem>
-                <MenuItem value="Updated">Updated</MenuItem>
-              </Select>
-            </FormControl>
-            <TextField label="Actor Email" fullWidth />
-            <FormControl fullWidth>
-              <InputLabel>Source</InputLabel>
-              <Select>
-                <MenuItem value="">All</MenuItem>
-                <MenuItem value="USER">USER</MenuItem>
-                <MenuItem value="API">API</MenuItem>
-              </Select>
-            </FormControl>
-            <TextField label="Activity Data" fullWidth />
-          </Box>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={filterDialog.onFalse}>Cancel</Button>
-          <Button variant="contained" disabled>
-            Apply Filter
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </>
+      <Scrollbar>
+        <Table sx={{ minWidth: 960 }}>
+          <TableHeadCustom headLabel={TABLE_HEAD} />
+
+          <TableBody>
+            {paginatedData.map((row) => {
+              const statusStyle = getStatusStyles(row.status, theme);
+
+              return (
+                <TableRow
+                  key={row.id}
+                  hover
+                  sx={{
+                    transition: 'background-color 0.2s',
+                    '&:hover': {
+                      backgroundColor: theme.palette.action.hover,
+                    },
+                  }}
+                >
+                  {/* Action/Date */}
+                  <TableCell>
+                    <Box
+                      sx={{
+                        backgroundColor: statusStyle.bg,
+                        color: statusStyle.color,
+                        fontWeight: 600,
+                        fontSize: 12,
+                        display: 'inline-block',
+                        px: 1.5,
+                        py: 0.5,
+                        borderRadius: 1,
+                        mb: 0.5,
+                      }}
+                    >
+                      {row.status}
+                    </Box>
+                    <Typography variant="body2">{row.date}</Typography>
+                  </TableCell>
+
+                  {/* Actor */}
+                  <TableCell>
+                    <Typography variant="body2" fontWeight="500">
+                      {row.name}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {row.email}
+                    </Typography>
+                  </TableCell>
+
+                  {/* Section/Source */}
+                  <TableCell>
+                    <Typography variant="body2" fontWeight="500">
+                      {row.section}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {row.source}
+                    </Typography>
+                  </TableCell>
+
+                  {/* Activity Data */}
+                  <TableCell>
+                    <Typography
+                      variant="body2"
+                      color="primary"
+                      sx={{ cursor: 'pointer', wordBreak: 'break-all' }}
+                    >
+                      {row.data}
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+
+            <TableNoData notFound={!paginatedData.length} />
+          </TableBody>
+        </Table>
+      </Scrollbar>
+
+      <TablePagination
+        component="div"
+        count={tableData.length}
+        page={page}
+        onPageChange={handleChangePage}
+        rowsPerPage={rowsPerPage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+        rowsPerPageOptions={[4, 5, 10, 25]}
+      />
+    </Card>
   );
 }

@@ -24,7 +24,8 @@ export default function Page() {
         <PageHeader
           title="Activity Log"
           description="Keep track of all actions in your Pabbly Email Verification account, like verifying single emails,
-             uploading and verifying email lists, downloading reports, deleting email lists, adding team members, and regenerating API keys. Activity Log helps you monitor changes and ensure everything runs smoothly. "
+             uploading and verifying email lists, downloading reports, deleting email lists, adding team members, 
+             and regenerating API keys. Activity Log helps you monitor changes and ensure everything runs smoothly. "
           showButton={false}
         />
       </Box>
