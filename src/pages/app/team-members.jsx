@@ -44,25 +44,25 @@ export default function Page() {
         }}
       >
         <StatsCards
-          statsCardstitle="Email Credits Consumed"
-          cardStats={32}
-          icon_name="consumed-icon.svg"
+          statsCardstitle="Unique Team Members Added"
+          cardStats={20}
+          icon_name="unique.png"
           icon_color="#10CBF3"
           bg_gradient="#10CBF3"
         />
 
         <StatsCards
-          statsCardstitle="Email Credits Remaining"
-          cardStats={9968}
-          icon_name="remaining-icon.svg"
+          statsCardstitle="Folders Shared by You"
+          cardStats={10}
+          icon_name="byyou.png"
           icon_color="#1D88FA"
           bg_gradient="#1D88FA"
         />
 
         <StatsCards
-          statsCardstitle="cardStats Number of Email Lists"
-          cardStats={100}
-          icon_name="lists-icon.svg"
+          statsCardstitle="Folders Shared With You"
+          cardStats={1000}
+          icon_name="sharedwithyou.png"
           icon_color="#28A645"
           bg_gradient="#28A645"
         />
