@@ -48,13 +48,13 @@ const TimeZoneSelector = () => {
   );
 
   return (
-    <Card sx={{ margin: 'auto',  p: 2, boxShadow: 3 }}>
+    <Card sx={{ margin: 'auto', p: 2, boxShadow: 3 }}>
       <CardContent>
         <Typography variant="h6" gutterBottom>
           Time Zone
         </Typography>
 
-        <FormControl fullWidth sx={{ mb: 2, mt:2, bgcolor: '#f8f9fa', borderRadius: 1 }}>
+        <FormControl fullWidth sx={{ mb: 2, mt: 2, bgcolor: '#f8f9fa', borderRadius: 1 }}>
           <InputLabel sx={{ bgcolor: 'white', px: 1 }}>Select Time Zone</InputLabel>
           <Select
             value={selectedTimeZone}
@@ -93,7 +93,7 @@ const TimeZoneSelector = () => {
 
         <Typography variant="body2" color="text.secondary">
           Select the time zone that matches your current location.{' '}
-          <a href="#" style={{ textDecoration: 'none', color: '#0d6efd' }}>
+          <a href="#" style={{ textDecoration: 'underline', fontSize: '12px', color: '#078DEE' }}>
             Learn more
           </a>
         </Typography>
