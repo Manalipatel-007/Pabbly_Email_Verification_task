@@ -164,6 +164,61 @@
 //         </Tooltip>
 //       </Box>
 
+//       {selectedTab !== 'all' && (
+//         <Box px={2} display="flex" alignItems="center" gap={0.5} mb={2}>
+//           <Box
+//             border="1px dashed #919eab33"
+//             display="flex"
+//             alignItems="center"
+//             gap={1}
+//             px={1.5}
+//             py={0.5}
+//             borderRadius={1}
+//           >
+//             <Typography variant="body2" fontWeight={500}>
+//               Status:
+//             </Typography>
+//             <Box
+//               display="flex"
+//               alignItems="center"
+//               px={1}
+//               py={0.25}
+//               sx={{
+//                 backgroundColor: '#919eab1f',
+//                 color: '#1c252e',
+//                 borderRadius: '8px',
+//                 fontSize: '0.8125rem',
+//                 fontWeight: 500
+//               }}
+//             >
+//               {STATUS_TABS.find((tab) => tab.value === selectedTab)?.label}
+//               <IconButton
+//                 size="small"
+//                 onClick={() => setSelectedTab('all')}
+//                 sx={{
+//                   ml: 0.5,
+//                   p: 0.2,
+//                   color: '#919eab',
+//                   '&:hover': {
+//                     background: 'transparent',
+//                   },
+//                 }}
+//               >
+//                 <Iconify icon="gridicons:cross-circle" width={16} />
+//               </IconButton>
+//             </Box>
+//           </Box>
+
+//           <Button
+//             onClick={() => setSelectedTab('all')}
+//             startIcon={<Iconify icon="weui:delete-filled" />}
+//             sx={{ textTransform: 'none', color: 'error.main', gap: '2px', minWidth: 0 }}
+//           >
+//             Clear
+//           </Button>
+//         </Box>
+//       )}
+
 //       <TableContainer>
 //         <Table>
 //           <TableHead>
@@ -231,9 +286,9 @@
 //                     arrow
 //                     placement="top-start"
 //                   >
-//                     <Typography
-//                       sx={{ fontSize: '14px' }}
-//                     >{`Contains ${row.emails} Emails`}</Typography>
+//                     <Typography sx={{ fontSize: '14px' }}>
+//                       {`Contains ${row.emails} Emails`}
+//                     </Typography>
 //                   </Tooltip>
 //                   {row.credit && (
 //                     <Tooltip title={`Credits consumed: ${row.credit}`} arrow placement="top-start">
@@ -244,7 +299,7 @@
 //                   )}
 //                 </TableCell>
 
-//                 <TableCell align="right">
+//                 <TableCell align="right" sx={{ pr: 1 }}>
 //                   <Tooltip title={`Click to ${row.action.toLowerCase()}`} arrow placement="top">
 //                     <Button color="primary" size="medium" variant="outlined">
 //                       {row.action}
@@ -252,7 +307,7 @@
 //                   </Tooltip>
 //                 </TableCell>
 
-//                 <TableCell>
+//                 <TableCell sx={{ pl: 1 }}>
 //                   <Tooltip title="Click to see more options" arrow placement="top">
 //                     <IconButton>
 //                       <Iconify icon="mdi:dots-vertical" />
@@ -265,12 +320,7 @@
 //         </Table>
 //       </TableContainer>
 
-//       <Box
-//         sx={{
-//           borderTop: '1px dashed #919eab33',
-//           px: 2,
-//         }}
-//       >
+//       <Box sx={{ borderTop: '1px dashed #919eab33', px: 2 }}>
 //         <TablePagination
 //           component="div"
 //           count={filteredData.length}
@@ -453,25 +503,123 @@ export default function DashboardListView() {
         </Tooltip>
       </Box>
 
+      {/* Filter summary with result count */}
       {/* {selectedTab !== 'all' && (
-        <Box px={2} display="flex" alignItems="center" gap={1}  >
-          <Box border="1px dashed #919eab33" display="flex" p={1} gap={1} borderRadius={1}>
-          <Typography variant="body2" fontWeight={500}>
-            Status:
-          </Typography>
-          <Label color="info" variant="soft">
-            {STATUS_TABS.find((tab) => tab.value === selectedTab)?.label}
-          </Label>
+        <Box px={2} display="flex" alignItems="center" gap={1} mb={2}>
+          <Typography variant="subtitle2">{filteredData.length} result{filteredData.length !== 1 && 's'} found</Typography>
+
+          <Box
+            border="1px dashed #919eab33"
+            display="flex"
+            alignItems="center"
+            gap={1}
+            px={1.5}
+            py={0.5}
+            borderRadius={1}
+          >
+            <Typography variant="body2" fontWeight={500}>
+              Status:
+            </Typography>
+            <Box
+              display="flex"
+              alignItems="center"
+              px={1}
+              py={0.25}
+              sx={{
+                backgroundColor: '#919eab1f',
+                color: '#1c252e',
+                borderRadius: '8px',
+                fontSize: '0.8125rem',
+                fontWeight: 500,
+              }}
+            >
+              {STATUS_TABS.find((tab) => tab.value === selectedTab)?.label}
+              <IconButton
+                size="small"
+                onClick={() => setSelectedTab('all')}
+                sx={{
+                  ml: 0.5,
+                  p: 0.2,
+                  color: '#919eab',
+                  '&:hover': {
+                    background: 'transparent',
+                  },
+                }}
+              >
+                <Iconify icon="gridicons:cross-circle" width={16} />
+              </IconButton>
+            </Box>
           </Box>
+
           <Button
             onClick={() => setSelectedTab('all')}
-            startIcon={<Iconify icon="ic:baseline-delete-outline"  />}
+            startIcon={<Iconify icon="weui:delete-filled" />}
             sx={{ textTransform: 'none', color: 'error.main', gap: '2px', minWidth: 0 }}
           >
             Clear
           </Button>
         </Box>
       )} */}
+      {selectedTab !== 'all' && (
+        <Box px={2} mb={2}>
+          <Typography sx={{ fontSize: '0.875rem', fontWeight: 500 }} variant="subtitle2" gutterBottom>
+            {filteredData.length} result{filteredData.length !== 1 && 's'} found
+          </Typography>
+
+          <Box display="flex" alignItems="center" gap={1}>
+            <Box
+              border="1px dashed #919eab33"
+              display="flex"
+              alignItems="center"
+              gap={1}
+              px={1.5}
+              py={0.5}
+              borderRadius={1}
+            >
+              <Typography variant="body2" fontWeight={500}>
+                Status:
+              </Typography>
+              <Box
+                display="flex"
+                alignItems="center"
+                px={1}
+                py={0.25}
+                sx={{
+                  backgroundColor: '#919eab1f',
+                  color: '#1c252e',
+                  borderRadius: '8px',
+                  fontSize: '0.8125rem',
+                  fontWeight: 500,
+                }}
+              >
+                {STATUS_TABS.find((tab) => tab.value === selectedTab)?.label}
+                <IconButton
+                  size="small"
+                  onClick={() => setSelectedTab('all')}
+                  sx={{
+                    ml: 0.5,
+                    p: 0.2,
+                    color: '#919eab',
+                    '&:hover': {
+                      background: 'transparent',
+                    },
+                  }}
+                >
+                  <Iconify icon="gridicons:cross-circle" width={16} />
+                </IconButton>
+              </Box>
+            </Box>
+
+            <Button
+              onClick={() => setSelectedTab('all')}
+              startIcon={<Iconify icon="weui:delete-filled" />}
+              sx={{ textTransform: 'none', color: 'error.main', gap: '2px', minWidth: 0 }}
+            >
+              Clear
+            </Button>
+          </Box>
+        </Box>
+      )}
 
       <TableContainer>
         <Table>
@@ -553,7 +701,7 @@ export default function DashboardListView() {
                   )}
                 </TableCell>
 
-                <TableCell align="right">
+                <TableCell align="right" sx={{ pr: 1 }}>
                   <Tooltip title={`Click to ${row.action.toLowerCase()}`} arrow placement="top">
                     <Button color="primary" size="medium" variant="outlined">
                       {row.action}
@@ -561,7 +709,7 @@ export default function DashboardListView() {
                   </Tooltip>
                 </TableCell>
 
-                <TableCell>
+                <TableCell sx={{ pl: 1 }}>
                   <Tooltip title="Click to see more options" arrow placement="top">
                     <IconButton>
                       <Iconify icon="mdi:dots-vertical" />
