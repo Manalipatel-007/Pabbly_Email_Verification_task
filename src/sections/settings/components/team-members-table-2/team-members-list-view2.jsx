@@ -132,7 +132,14 @@ export function TeamMembersListView2() {
           </TableHead>
           <TableBody>
             {tableData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
-              <TableRow key={row.id}>
+              <TableRow key={row.id}
+              hover
+              sx={{
+                transition: 'background-color 0.2s',
+                '&:hover': {
+                  backgroundColor: "",
+                },
+              }}>
                 <TableCell sx={{ width: 48 }}>
                   <Checkbox />
                 </TableCell>

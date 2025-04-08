@@ -185,7 +185,7 @@ export default function HelpCard({ title, description, items, style, action, img
     <Box
       sx={{
         p: 5,
-        gap: 4,
+        gap: 16,
         borderRadius: 2,
         display: 'flex',
         height: { lg: 1 },
@@ -212,9 +212,9 @@ export default function HelpCard({ title, description, items, style, action, img
           {title}
         </Typography>
 
-        <Typography variant="body2" sx={{ color: 'text.secondary', ...(action && { mb: 1 }) }}>
+        {/* <Typography variant="body2" sx={{ color: 'text.secondary', ...(action && { mb: 1 }) }}>
           {description}
-        </Typography>
+        </Typography> */}
 
         <Box component="ul" sx={style} mb={2} p={1}>
           {items.map((item, index) => (
@@ -244,7 +244,7 @@ export default function HelpCard({ title, description, items, style, action, img
             src={img}
             alt="Thumbnail"
             sx={{
-              width: { xs: '100%', sm: '400px', lg: '500px' },
+              width: { xs: '100%', sm: '350px', lg: '400px' },
               height: 'auto',
               objectFit: 'contain',
               display: 'block',

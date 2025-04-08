@@ -37,7 +37,7 @@ export default function PageHeading({ title, description, showButton = true, but
         alignItems: { xs: 'flex-start', sm: 'center' },
         flexDirection: { xs: 'column', sm: 'row' },
         gap: 2, // adds space between heading and button in column layout
-        mt: 4,
+        mt: 3,
       }}
     >
       <Box>

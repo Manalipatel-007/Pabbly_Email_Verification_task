@@ -106,7 +106,7 @@ export function HeaderBase({
                 component="img"
                 src="/logo/PEV_LOGO.svg"
                 alt="PEV Logo"
-                sx={{ height: 40, width: 'auto', mr: 2 }}
+                sx={{ height: 41.76, width: 'auto', mr: 2 }}
               />
             )}
 

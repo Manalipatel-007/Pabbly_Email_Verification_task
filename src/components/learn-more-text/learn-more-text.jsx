@@ -8,13 +8,13 @@ export function LearnMoreTypography({ children, ...props }) {
       sx={{
         color: '#078dee',
         fontSize: '14px',
-        fontWeight: 500,
+        fontWeight: 400,
         textDecoration: 'underline',
         cursor: 'pointer',
         ...props.sx,
       }}
     >
-      Learn More
+      Learn more
     </Typography>
   );
 }

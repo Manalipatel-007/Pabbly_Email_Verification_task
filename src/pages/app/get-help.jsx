@@ -27,7 +27,7 @@ export default function Page() {
         showButton={false}
       />
 
-      <Box sx={{ mt: 3 }}>
+      <Box sx={{ mt: 4 }}>
         <Grid xs={12} md={8}>
           <HelpCard
             title="Points To Remember!"

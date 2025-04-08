@@ -120,7 +120,7 @@ export function ActivityLogListView() {
         }}
       >
         <Box>
-          <Typography sx={{ mb: 1 }} variant="h6">
+          <Typography sx={{ mb: 0.5 , mt: 1 }} variant="h6">
             Activity Log
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -167,7 +167,7 @@ export function ActivityLogListView() {
                         fontWeight: 600,
                         fontSize: 12,
                         display: 'inline-block',
-                        px: 1.5,
+                        px: 1,
                         py: 0.5,
                         borderRadius: 1,
                         mb: 0.5,
@@ -180,7 +180,7 @@ export function ActivityLogListView() {
 
                   {/* Actor */}
                   <TableCell>
-                    <Typography variant="body2" fontWeight="500">
+                    <Typography variant="body2" fontWeight="400">
                       {row.name}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
@@ -190,7 +190,7 @@ export function ActivityLogListView() {
 
                   {/* Section/Source */}
                   <TableCell>
-                    <Typography variant="body2" fontWeight="500">
+                    <Typography variant="body2" fontWeight="400">
                       {row.section}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">

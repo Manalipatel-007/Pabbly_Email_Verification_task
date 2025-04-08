@@ -128,7 +128,14 @@ export default function CreditSummaryListView() {
               const statusStyle = getStatusStyles(row.action, theme);
 
               return (
-                <TableRow key={row.id}>
+                <TableRow key={row.id}  
+                hover
+                sx={{
+                  transition: 'background-color 0.2s',
+                  '&:hover': {
+                    backgroundColor: "",
+                  },
+                }}>
                   <TableCell>
                     <Box
                       sx={{

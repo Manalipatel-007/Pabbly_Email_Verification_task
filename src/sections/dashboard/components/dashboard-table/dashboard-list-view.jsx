@@ -183,14 +183,14 @@ export default function DashboardListView() {
         />
         <Tooltip title="Refresh" arrow placement="top">
           <IconButton color="primary">
-            <Iconify icon="mynaui:refresh" />
+            <Iconify icon="charm:refresh" />
           </IconButton>
         </Tooltip>
       </Box>
 
-{/* ----------------------------------------------------------------------------------------------------------------------- */}
+      {/* ----------------------------------------------------------------------------------------------------------------------- */}
       {selectedTab !== 'all' && (
-        <Box px={2} mb={2} pl={4} >
+        <Box px={2} mb={2} pl={4}>
           <Typography
             sx={{ fontSize: '0.875rem', fontWeight: 500 }}
             variant="subtitle2"
@@ -245,8 +245,8 @@ export default function DashboardListView() {
 
             <Button
               onClick={() => setSelectedTab('all')}
-              startIcon={<Iconify icon="weui:delete-filled" />}
-              sx={{ textTransform: 'none', color: 'error.main', gap: '2px', minWidth: 0 }}
+              startIcon={<Iconify icon="weui:delete-filled" sx={{ width: 20, height: 20 }} />}
+              sx={{ textTransform: 'none', color: 'error.main', gap: '0', minWidth: 0 }}
             >
               Clear
             </Button>
@@ -268,9 +268,19 @@ export default function DashboardListView() {
               <TableCell />
             </TableRow>
           </TableHead>
+
           <TableBody>
             {paginatedData.map((row) => (
-              <TableRow key={row.id}>
+              <TableRow
+                key={row.id}
+                hover
+                sx={{
+                  transition: 'background-color 0.2s',
+                  '&:hover': {
+                    backgroundColor: '',
+                  },
+                }}
+              >
                 <TableCell>
                   <Checkbox />
                 </TableCell>

@@ -100,7 +100,7 @@ export default function BigCard({ title, description, items, style, action, img,
                 alt="Tutorial Thumbnail"
                 sx={{
                   width: '100%',
-                  maxWidth: 420,
+                  maxWidth: 440,
                   objectFit: 'cover',
                   borderRadius: 2,
                   display: 'block',
