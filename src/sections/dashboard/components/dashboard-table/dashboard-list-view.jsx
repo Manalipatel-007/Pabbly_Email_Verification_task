@@ -245,7 +245,7 @@ export default function DashboardListView() {
 
             <Button
               onClick={() => setSelectedTab('all')}
-              startIcon={<Iconify icon="weui:delete-filled" sx={{ width: 20, height: 20 }} />}
+              startIcon={<Iconify icon="solar:trash-bin-trash-bold" sx={{ width: 20, height: 20 }} />}
               sx={{ textTransform: 'none', color: 'error.main', gap: '0', minWidth: 0 }}
             >
               Clear
@@ -390,7 +390,7 @@ export default function DashboardListView() {
           <Iconify icon="mdi:folder-move-outline" sx={{ mr: 1 }} /> Move to Folder
         </MenuItem>
         <MenuItem onClick={handleDeleteClick} sx={{ color: 'error.main' }}>
-          <Iconify icon="mdi:trash-can-outline" sx={{ mr: 1 }} /> Delete
+          <Iconify icon="solar:trash-bin-trash-bold" sx={{ mr: 1 }} /> Delete
         </MenuItem>
       </Menu>
 
