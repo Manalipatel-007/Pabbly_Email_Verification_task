@@ -22,7 +22,7 @@ export default function Page() {
         showButton={false}
       />
 
-      <Box sx={{ mt: 2 }}>
+      <Box sx={{ mt: 3 }}>
         <SettingsTabs/>
       </Box>
       <Box
