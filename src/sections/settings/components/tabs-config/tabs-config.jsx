@@ -4,7 +4,7 @@ export const TABS = [
   {
     value: 'Credits Summary',
     label: 'Credits Summary',
-    icon: <Iconify icon="clarity:rack-server-solid" width={24} />,
+    icon: <Iconify icon="clarity:rack-server-solid" width={20} />,
   },
   {
     value: 'API',
@@ -19,7 +19,7 @@ export const TABS = [
   {
     value: 'Activity Log',
     label: 'Activity Log',
-    icon: <Iconify icon="famicons:bag" width={24} />,
+    icon: <Iconify icon="material-symbols-light:lock-clock-rounded" width={24} />,
   },
   {
     value: 'Time Zone',
