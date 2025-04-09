@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-import { Box, Menu, Button, MenuItem, Typography } from '@mui/material';
+import { Box, Menu, Button, Tooltip, MenuItem,  Typography,  } from '@mui/material';
 
 import { Iconify } from '../iconify';
 import { LearnMoreTypography } from '../learn-more/learn-more';
 
-export default function PageHeader({ title, description, showButton = true, buttonTitle }) {
+export default function PageHeader({ title, description,tooltipText, showButton = true, buttonTitle }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -38,12 +38,19 @@ export default function PageHeader({ title, description, showButton = true, butt
         </Typography>
       </Box>
 
+   <Tooltip title={tooltipText} placement="top" arrow>
       {showButton && (
         <Box>
           <Button
             variant="contained"
             size="large"
             color="primary"
+            sx={{
+              '&:hover': {
+                backgroundColor: '#0351ab', 
+                transition: 'none',
+              },
+            }}
             startIcon={
               <Iconify icon="heroicons:plus-circle-16-solid" style={{ width: 18, height: 18 }} />
             }
@@ -80,6 +87,7 @@ export default function PageHeader({ title, description, showButton = true, butt
           </Menu>
         </Box>
       )}
+</Tooltip>
     </Box>
   );
 }

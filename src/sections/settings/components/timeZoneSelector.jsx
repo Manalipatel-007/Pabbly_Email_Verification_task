@@ -99,7 +99,12 @@ const TimeZoneSelector = () => {
         </Typography>
 
         <Box mt={2}>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" sx={{
+              '&:hover': {
+                backgroundColor: '#0351ab', 
+                transition: 'none',
+              },
+            }}>
             Save
           </Button>
         </Box>

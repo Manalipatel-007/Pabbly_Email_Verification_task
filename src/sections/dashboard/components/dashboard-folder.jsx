@@ -103,6 +103,10 @@ export default function FolderList() {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
+              '&:hover': {
+                backgroundColor: '#0351ab', 
+                transition: 'none',
+              },
             }}
           >
             <Iconify

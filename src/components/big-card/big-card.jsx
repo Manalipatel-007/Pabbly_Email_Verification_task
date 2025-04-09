@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 
 import { LearnMoreTypography } from '../learn-more-text/learn-more-text';
 
-export default function BigCard({ title, description, items, style, action, img, sx, ...other }) {
+export default function BigCard({ title, description, items, space, style, action, img, sx, ...other }) {
   const theme = useTheme();
 
   return (

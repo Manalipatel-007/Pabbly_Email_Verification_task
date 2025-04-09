@@ -84,6 +84,7 @@ export default function Page() {
       <PageHeader
         title="Dashboard"
         description="Verify and manage all your email lists in one place with the Pabbly Email Verification Dashboard."
+        tooltipText="Click to verify single or bulk email addresses."
         buttonTitle="Verify Email"
       />
 
@@ -147,7 +148,7 @@ export default function Page() {
               description="Please adhere to the following guidelines when uploading your CSV file:"
               style={style}
               items={items}
-              action={<VerifyEmailMenu />} // 👈 Here we use the custom dropdown
+              action={<VerifyEmailMenu />} 
               img={thumbnailImage}
             />
           </Grid>

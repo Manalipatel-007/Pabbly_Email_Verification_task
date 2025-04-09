@@ -12,6 +12,7 @@ export function LearnMoreTypography({ children, ...props }) {
         textDecoration: 'underline',
         cursor: 'pointer',
         ...props.sx,
+        ml: '5px',
       }}
     >
       Learn more

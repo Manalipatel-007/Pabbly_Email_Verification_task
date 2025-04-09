@@ -14,4 +14,6 @@ export const listItems = {
     'Verified email lists are automatically deleted after 60 days.',
     'Ensure you download the reports for verified email lists within that duration to retain access.',
   ],
+    
+  
 };
