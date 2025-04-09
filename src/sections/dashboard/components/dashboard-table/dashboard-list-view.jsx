@@ -387,7 +387,7 @@ export default function DashboardListView() {
             handleMenuClose();
           }}
         >
-          <Iconify icon="mdi:folder-move-outline" sx={{ mr: 1 }} /> Move to Folder
+          <Iconify icon="fluent:folder-move-16-filled" sx={{ mr: 1 }} /> Move to Folder
         </MenuItem>
         <MenuItem onClick={handleDeleteClick} sx={{ color: 'error.main' }}>
           <Iconify icon="solar:trash-bin-trash-bold" sx={{ mr: 1 }} /> Delete
