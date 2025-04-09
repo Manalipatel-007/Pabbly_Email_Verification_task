@@ -49,6 +49,7 @@ export default function Page() {
           icon_name="unique.png"
           icon_color="#10CBF3"
           bg_gradient="#10CBF3"
+          tooltipText="Team Members Added By You."
         />
 
         <StatsCards
@@ -57,6 +58,7 @@ export default function Page() {
           icon_name="byyou.png"
           icon_color="#1D88FA"
           bg_gradient="#1D88FA"
+          tooltipText="Folder(s) Shared by You."
         />
 
         <StatsCards
@@ -65,6 +67,7 @@ export default function Page() {
           icon_name="sharedwithyou.png"
           icon_color="#28A645"
           bg_gradient="#28A645"
+          tooltipText="Folder(s) Shared With You."
         />
       </Box>
 

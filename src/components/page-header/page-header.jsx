@@ -52,7 +52,7 @@ export default function PageHeader({ title, description,tooltipText, showButton 
               },
             }}
             startIcon={
-              <Iconify icon="heroicons:plus-circle-16-solid" style={{ width: 18, height: 18 }} />
+              <Iconify icon="heroicons:plus-circle-16-solid" style={{ width: 20, height: 20 }} />
             }
             endIcon={<Iconify icon="formkit:down" style={{ width: 18, height: 18 }} />}
             onClick={handleClick}
