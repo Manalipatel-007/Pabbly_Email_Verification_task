@@ -110,8 +110,8 @@ export default function FolderList() {
             }}
           >
             <Iconify
-              icon="heroicons:plus-circle-16-solid"
-              sx={{ width: 20, height: 20, color: 'white' }}
+              icon="charm:plus"
+              sx={{ width: 24, height: 24, color: 'white' }}
             />
           </Button>
         </Tooltip>
